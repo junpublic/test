@@ -8,7 +8,7 @@ public class Ex05_Lotto2 {
 
 	
 		int[][] lotto = new int[5][6];
-	
+		boolean truth[] = new boolean[6];
 		
 //		for (int j = 0; j < lotto.length; j++) {//행의 크기만큼 반복함
 //			for (int i = 0; i < lotto[j].length; i++) {//열의 크기만큼 반복함
