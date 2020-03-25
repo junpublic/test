@@ -19,8 +19,8 @@ public class GradeText {
 			jumsu[i] = input.nextInt();//클래스를 위한 객체 생성
 		}
 		GradeExpr ge = new GradeExpr(jumsu);
-		System.out.println("총점: "+ge.getTotal());
-		System.out.println("평균: "+ge.getAverage());
+		System.out.println("총점: "+ ge.getTotal());
+		System.out.println("평균: "+String.format("%.2f",ge.getAverage()));
 		System.out.println("최고 점수: "+ge.getGoodScore());
 		System.out.println("최소 점수: "+ge.getBadScore());
 		

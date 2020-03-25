@@ -6,10 +6,10 @@ public class GradeExpr {
 
 	
 	public GradeExpr(int[] jumsu) {
-		this.jumsu = jumsu;
+		this.jumsu = jumsu;//굳이 하나씩 넣지 않고 이렇게 한번에 넣어 주면 된다.
 	}
 	double getAverage(){
-		return getTotal()/jumsu.length;
+		return (double)getTotal()/jumsu.length;
 	}
 	int getTotal() {
 		int total=0;
