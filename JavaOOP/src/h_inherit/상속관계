@@ -1,0 +1,66 @@
+### 상속관계
+
+[개발시]
+1. 부모클래스의 멤버 그냥 사용
+2. 부모클래스에 없는 경우 그냥 추가
+3. 부모클래스에 있는데 변경이 필요한 경우 (overriding)
+
+
+===================================
+[설계시]
+- 공통요소를 부모클래스에
+- 고유요소를 자식클래스에
+
+
+
+5. 다음 소스에서 “여기” 부분에 메소드 오버라이딩으로 적합한 것은?
+
+ 
+
+class  Parent {
+
+   public void method( ) {   }
+
+}
+
+class Child extends Parent {
+
+   /*    여기      */
+
+}
+
+           (1)void method( ) {   }
+
+           (2)public void method( ) {   }
+
+           (3)public void method( int i ) {   }
+
+           (4)public int  method() { return 0;  }
+
+ 
+
+ 
+
+6. 다음 소스에서 “여기” 부분에 들어갈 코드로 알맞은 것은?
+
+ 
+
+class  Parent {
+
+   public double method( ) {   return   36.7;    }
+
+}
+
+class Child extends Parent {
+
+   /*    여기      */
+
+}
+
+           (1)public void method( ) {  double d =36.7;  };//
+
+           (2)public double method( double d ) { return d; }//오버로딩
+
+           (3)double method( double d ) { return d; }//오버로딩
+
+           (4)double method( )  { return 36.7;   }//public 붙여야됨
