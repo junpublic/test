@@ -1,0 +1,349 @@
+[[ 기초다지기 ]]
+
+
+
+1. 다음 소스의 실행 결과는?
+
+
+abstract class Parent{
+
+   abstract  int  getNumber( );
+
+}
+
+public class Child extends Parent {
+
+private  int  number = 100;
+
+private  int  getNumber() {   return  number;  }
+
+}
+
+}
+
+
+
+           (1)에러없이 컴파일 된다.                       (2)2라인에서 에러가 발생한다
+
+
+
+           (3)4라인에서 에러가 발생한다.                (4)6라인에서 에러가 발생한다.
+
+
+
+ 
+
+
+
+2. 다음 소스 중에서 상속 할 수 없는 클래스는?
+
+
+
+           (1)final  abstract class Test {
+
+                       int  i;
+
+                       void method() { }
+
+             }
+
+
+
+(2) private  class Test {
+
+                       int  i;
+
+                       void method() { }
+
+             }
+
+
+(3) abstract  class Test {
+
+
+
+                       int  i;
+                     void method() { }
+
+             }
+
+(4) class Test {
+
+
+
+                       final int i;
+                    final void  method() { }
+
+
+
+             }
+
+(5) final  class Test {
+
+                       int  i;
+
+                       void method() { }
+
+
+             }
+
+
+
+3. 같은 패키지에 있는 클래스에서는 참조할 수 있고, 다른 패키지에 있는 클래스에서는 참조할 수 없는 메소드를 만들고자 할 때, 이메소드 앞에 어떤 접근 지정자를 선언해야 하나?
+
+
+(1) public           (2) private          (3) protected      (4)아무것도 지정하지 않는다.//정답
+
+
+
+4. 다음 소스의 실행 결과는?
+
+
+public class Test {
+
+private  final String str = “매력있는”;
+
+void method( String s ) {
+
+    str += s;
+
+}
+
+public static void main ( String [] args ) {
+
+  Test  t = new Test();
+
+  t.method(“자바”);
+
+  System.out.println( t.str );
+
+}
+
+}
+
+
+           (1)컴파일에러가 발생한다                      (2)“매력있는” 문장 출력된다.
+
+
+
+           (3)“매력있는자바” 문장 출력된다.             (4) 실행은 되지만 아무것도 출력되지 않는다.
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+7. 다음 소스에서 “여기” 부분에 들어갈 코드로 알맞은 것은?
+
+
+
+ 
+
+
+
+class  Parent {
+
+final  int  i = 1;
+
+Parent() { }
+
+Parent( String s ) { System.out.println(s);  }
+
+}
+
+class Child extends Parent {
+
+   int  i;
+
+   Child() { }
+
+   Child( int i ) { /* 여기 */  }
+
+   public static void main ( String [] args ) {
+
+      Child  ch = new Child( 10 );
+
+   }
+
+}
+
+
+
+ 
+
+
+
+           (1)Child ( int i ) {
+
+
+
+                       this.i= i;
+
+
+
+                       this();
+
+
+
+             }
+
+
+
+           (2)Child ( int i ) {
+
+
+
+                       this.i= i;                      
+
+
+
+                       super(“생성”);
+
+
+
+             }
+
+
+
+           (3)Child ( int i ) {
+
+
+
+                       super(“생성”);
+
+
+
+                       this.i= i;           
+
+
+
+             }
+
+
+
+           (4)Child ( int i ) {
+
+
+
+                       super(“생성”);
+
+
+
+                       super.i= i;
+
+
+
+             }
+
+
+
+8. 다음소스에서 잘못 된 부분을 찾아 수정하시오.
+
+
+
+abstract class  Parent{
+
+     public void method() { }
+
+}
+
+public class Child extends Parent {
+
+public void method() { }
+
+public static void main( String [] args ) {
+
+    Parent  p = new Parent( );
+
+    p.method();
+
+    Child   c = new Child();
+
+    c.method();
+
+}
+
+}
+
+
+
+ 
+
+
+
+9. 다음 소스의 출력 결과는?
+
+
+
+class Parent {
+
+int  i = 7;
+
+public int get() {  return i ; }
+
+}
+
+class Child extends Parent {
+
+int  i = 5 ;
+
+public int get() {  return i ; }
+
+}
+
+public class Test {
+
+public static void main ( String [] args ) {
+
+   Parent  p = new Parent ();
+
+   System.out.println(“---------------------1---------------------“);
+
+   System.out.println( p.i );
+
+   System.out.println( p.get( ) );
+
+Child  c = new Child ();
+
+   System.out.println(“---------------------2---------------------“);
+
+   System.out.println( c.i );
+
+   System.out.println( c.get( ) );
+
+   Parent  p2 = new Child ();
+
+   System.out.println(“---------------------3---------------------“);
+
+   System.out.println( p2.i );
+
+   System.out.println( p2.get( ) );
+
+}
+
+}
+1. 4
+2. 5
+3. 4
+4. 1
+7. 3
+8. Parent p = new Parent();
+9.
+-----------1-----------
+7
+7
+-----------2-----------
+5
+5
+-----------3-----------
+7
+5
+
