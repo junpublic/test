@@ -28,7 +28,7 @@ public class InfoText extends JFrame{
 		bAdd.setToolTipText("사용자 정보를 입력합니다");
 		bAdd.setMnemonic('i');//alt + i
 		
-		
+		 
 		bShow= new JButton("Show",new ImageIcon("src/c_info/imgs/2.PNG"));
 		bSearch= new JButton("Search",new ImageIcon("src/c_info/imgs/3.PNG"));
 		bDelete= new JButton("Delete",new ImageIcon("src/c_info/imgs/4.PNG"));

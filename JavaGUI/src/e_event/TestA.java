@@ -17,7 +17,7 @@ public class TestA extends JFrame{
 		add(b1);
 		
 		
-		setSize(400,400);
+		setSize(400,400); 
 		setVisible(true);
 		
 	}

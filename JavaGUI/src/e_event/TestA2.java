@@ -21,7 +21,7 @@ public class TestA2 extends JFrame{
 		setVisible(true);
 		
 	}
-	public void eventProc() {
+	public void eventProc() { 
 		//(2)이벤트 핸들러 객체 생성
 //		MyEvent me = new MyEvent();
 		
