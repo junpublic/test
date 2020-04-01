@@ -2,17 +2,21 @@ package d_cal;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class CalculatorTest extends JFrame{
+public class CalculatorTest extends JFrame implements ActionListener{
 	//멤버 변수 선언
 	JFrame a;
 	JTextField tf;
-//	JButton b_1,b_2,b_3,b_4,b_5,b_6,b_7,b_8,b_9,b_0;
+
+	int prev;//이전값
+	String op;//연산자
 	
 	JButton b_plus,b_equal,b_minus,b_mult,b_nanugi;
 	JButton [] b = new JButton[10];
@@ -24,16 +28,7 @@ public class CalculatorTest extends JFrame{
 		for(int i = 0; i<10;i++) {
 			b[i] = new JButton(String.valueOf(i));
 		}
-//		b_1 = new JButton("1");
-//		b_2 = new JButton("2");
-//		b_3 = new JButton("3");
-//		b_4 = new JButton("4");
-//		b_5 = new JButton("5");
-//		b_6 = new JButton("6");
-//		b_7 = new JButton("7");
-//		b_8 = new JButton("8");
-//		b_9 = new JButton("9");
-//		b_0 = new JButton("0");
+
 		b_plus = new JButton("+");
 		b_equal = new JButton("=");
 		b_minus = new JButton("-");
@@ -51,15 +46,6 @@ public class CalculatorTest extends JFrame{
 			for(int i = 1;i<10;i++) {
 				p.add(b[i]);
 			}
-//			p.add(b_1);
-//			p.add(b_2);
-//			p.add(b_3);
-//			p.add(b_4);
-//			p.add(b_5);
-//			p.add(b_6);
-//			p.add(b_7);			
-//			p.add(b_8);
-//			p.add(b_9);
 			p.add(b_plus);
 			p.add(b[0]);
 			p.add(b_equal);			
@@ -72,12 +58,87 @@ public class CalculatorTest extends JFrame{
 		
 		a.add(tf,BorderLayout.NORTH);
 		
-		a.setSize(500,400);
+		a.setSize(300,300);
 		a.setVisible(true);
+	}
+
+	//이벤트 등록
+	public void eventProc() {
+		for(int i=0;i<b.length;i++) {
+			b[i].addActionListener(this);
+		}
+		b_plus.addActionListener(this);
+		b_equal .addActionListener(this);
+		b_minus.addActionListener(this);
+		b_mult.addActionListener(this);
+		b_nanugi.addActionListener(this);
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		JButton evt = (JButton)e.getSource();
+		
+		//숫자가 눌렸을 때
+		for(int i=0;i<10;i++) {
+			if(evt == b[i]) {
+				String su = tf.getText();
+				su += b[i].getText();
+				tf.setText(su);
+			}
+		}
+		if(evt ==b_plus) {
+			prev = Integer.parseInt(tf.getText());//수를 가져옴
+			tf.setText(null);//초기화
+			op = evt.getText();
+		}else if(evt == b_minus) {
+			prev = Integer.parseInt(tf.getText());//수를 가져옴
+			tf.setText(null);//초기화
+			op = evt.getText();
+		}else if(evt == b_mult) {
+			prev = Integer.parseInt(tf.getText());//수를 가져옴
+			tf.setText(null);//초기화
+			op = evt.getText();
+		}else if(evt ==b_nanugi) {
+			prev = Integer.parseInt(tf.getText());//수를 가져옴
+			tf.setText(null);//초기화
+			op = evt.getText();
+		}
+		if(evt == b_equal) {
+			int result=0;
+			int second =0;
+			switch(op) {
+			case "+":
+				second = Integer.parseInt(tf.getText());
+				result = prev + second;
+				tf.setText(String.valueOf(result));
+				break;
+			case "*":
+				second = Integer.parseInt(tf.getText());
+				result= prev * second;
+				tf.setText(String.valueOf(result));
+				break;
+			case "/":
+				second = Integer.parseInt(tf.getText());
+				result = prev / second;
+				tf.setText(String.valueOf(result));
+				break;
+			case "-":
+				second = Integer.parseInt(tf.getText());
+				result = prev - second;
+				tf.setText(String.valueOf(result));
+				break;
+				
+				
+			}
+		}
+		
+		
+		
+		
 	}
 	public static void main(String[] args) {
 		CalculatorTest t = new CalculatorTest();
 		t.display();
+		t.eventProc();
 	}
 
 }
