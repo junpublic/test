@@ -19,7 +19,7 @@ import javax.swing.ListModel;
 
 public class ShopB extends JFrame implements ActionListener{
 	
-	Main main;
+	
 	JButton cancle = new JButton("취소");
 	JList list;
 	
@@ -27,12 +27,12 @@ public class ShopB extends JFrame implements ActionListener{
 	static int[] OrderPrice;
 	ShopB(){
 	JPanel p = new JPanel();
-	list = new JList();
-//	
-//	for(int i=0;i<main.chicken.size();i++) {
-//		
-//		list.add(main.chicken.get(i));	
-//		}
+	list = new JList<ArrayList>();
+	
+	for(int i=0;i<Main.chicken.size();i++) {
+		
+		list.setModel((ListModel) Main.chicken.get(i));	
+		}
 	p.setLayout(new GridLayout(1,2));
 	p.add(list);
 	p.add(cancle);
