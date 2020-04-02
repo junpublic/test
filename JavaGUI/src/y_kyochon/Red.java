@@ -2,11 +2,14 @@ package y_kyochon;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
-public class Red extends JButton{
+public class Red extends JButton implements ActionListener{
 	JButton Red_1,Red_2,Red_3;//오리지널 치킨 버튼
 	
 	Red  (){
@@ -16,10 +19,47 @@ public class Red extends JButton{
 		Red_1.setBackground(Color.WHITE);
 		Red_2.setBackground(Color.WHITE);
 		Red_3.setBackground(Color.WHITE);
+		eventProc();
 		setLayout(new GridLayout(1,3));
 		add(Red_1);
 		add(Red_2);
 		add(Red_3);
+	}
+	public void eventProc() {
+		Red_1.addActionListener(this);
+		Red_2.addActionListener(this);
+		Red_3.addActionListener(this);
+	}
+	
+public void actionPerformed(ActionEvent e) {
+		
+		JButton b = (JButton) e.getSource();
+		if (b == Red_1) {
+			int result = JOptionPane.showConfirmDialog(null, "교촌레드스틱을 장바구니에 담겠습니까?", "상품", JOptionPane.YES_NO_OPTION, 0);
+			if (result == JOptionPane.YES_OPTION) {
+				
+			} else if (result == JOptionPane.NO_OPTION) {
+
+			}
+		}
+		if(b == Red_2) {
+			int result = JOptionPane.showConfirmDialog(null, "교촌레드콤보을 장바구니에 담겠습니까?", "상품", JOptionPane.YES_NO_OPTION, 0);
+			if (result == JOptionPane.YES_OPTION) {
+
+			} else if (result == JOptionPane.NO_OPTION) {
+
+			}
+			
+		}
+		if(b == Red_3) {
+			int result = JOptionPane.showConfirmDialog(null, "교촌레드오리지날을 장바구니에 담겠습니까?", "상품", JOptionPane.YES_NO_OPTION, 0);
+			if (result == JOptionPane.YES_OPTION) {
+
+			} else if (result == JOptionPane.NO_OPTION) {
+
+			}
+			
+		}
 	}
 
 	
