@@ -21,17 +21,17 @@ public class SimpleServer {
 		
 			// 2. 클라이언트 접속시 소켓 생성
 			// 3. 소켓의 입출력 스트림 얻기
-			clientSocket = server.accept();
+			clientSocket = server.accept();//클라이언트가 들어올 떄 소켓을 주겠음
 			in = new DataInputStream( clientSocket.getInputStream());
 			out = new DataOutputStream( clientSocket.getOutputStream() );
 		
 			// 4. 데이터 전송
-				String line = in.readUTF();
+				String line = in.readUTF();//상대방이 뭔가 라이팅을 함
 				System.out.println("we received : " + line );
 				if( line.compareTo("안녕") == 0 ) {
-					out.writeUTF("저도 반갑습니다." );	
+					out.writeUTF("GRICIA." );	
 				} else {
-					out.writeUTF("인사말이 아닙니다.");
+					out.writeUTF("바이 짜이찌엔");
 				}
 		
 			// 5. 소켓닫기

@@ -28,6 +28,7 @@ public class Main extends JFrame implements ActionListener{
 		honey = new Honey();
 		red = new Red();
 		ShopB = new JButton("장바구니");
+		shopB = new ShopB();
 		
 		JTabbedPane pane = new JTabbedPane();//창을 텝으로 만들어줌
 		pane.add("교촌시리즈",original);
@@ -62,9 +63,9 @@ public class Main extends JFrame implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		JButton evt = (JButton)e.getSource();			
-			shopB = new ShopB();	
+		JButton evt = (JButton)e.getSource();
 			
+			shopB.setVisible(true);
 		
 	}
 }

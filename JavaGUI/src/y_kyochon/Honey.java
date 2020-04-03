@@ -40,7 +40,8 @@ public void actionPerformed(ActionEvent e) {
 		if (b == Honey_1) {
 			int result = JOptionPane.showConfirmDialog(null, "교촌레드스틱을 장바구니에 담겠습니까?", "상품", JOptionPane.YES_NO_OPTION, 0);
 			if (result == JOptionPane.YES_OPTION) {
-
+				Main.chicken.add(Main.Chicken[3]);
+				Main.price.add(Main.Price[3]);
 			} else if (result == JOptionPane.NO_OPTION) {
 
 			}
@@ -48,7 +49,8 @@ public void actionPerformed(ActionEvent e) {
 		if(b == Honey_2) {
 			int result = JOptionPane.showConfirmDialog(null, "교촌레드콤보을 장바구니에 담겠습니까?", "상품", JOptionPane.YES_NO_OPTION, 0);
 			if (result == JOptionPane.YES_OPTION) {
-
+				Main.chicken.add(Main.Chicken[4]);
+				Main.price.add(Main.Price[4]);
 			} else if (result == JOptionPane.NO_OPTION) {
 
 			}
@@ -57,7 +59,8 @@ public void actionPerformed(ActionEvent e) {
 		if(b == Honey_3) {
 			int result = JOptionPane.showConfirmDialog(null, "교촌레드오리지날을 장바구니에 담겠습니까?", "상품", JOptionPane.YES_NO_OPTION, 0);
 			if (result == JOptionPane.YES_OPTION) {
-
+				Main.chicken.add(Main.Chicken[5]);
+				Main.price.add(Main.Price[5]);
 			} else if (result == JOptionPane.NO_OPTION) {
 
 			}

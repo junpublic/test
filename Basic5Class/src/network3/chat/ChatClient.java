@@ -7,7 +7,7 @@ import java.io.*;
 import javax.swing.*;
 import java.util.*;
 
-class ChatClient implements ActionListener {
+class ChatClient implements ActionListener,Runnable {
 	JFrame f;
 
 	JTextField connTF, sendTF;
@@ -109,17 +109,55 @@ class ChatClient implements ActionListener {
 	
 
 	void changeNameProc(){
+		String nickname = "/name   "+changeNameTF.getText() + "\n";
+		
+		try {
+			out.write(nickname.getBytes());
+		} catch (IOException e) {
+			ta.append("이름변경 실패:"+e.toString());
+		}
+		
 		JOptionPane.showMessageDialog(null, "대화명을 바꿉니다");
 	}
 
 	void connProc() {
 		JOptionPane.showMessageDialog(null, "서버에 접속합니다");
+		String ip = connTF.getText();
+		
+		try {
+			s = new Socket(ip,1234);
+			out = s.getOutputStream();
+			in = new BufferedReader(new InputStreamReader(s.getInputStream()));//바이트형 통로를 문자형 통로로 쓰겠다.
+		
+			new Thread(this).start();
+		} catch (Exception e) {
+			ta.setText("접속 실패:"+ e.toString());
+		
+		}
 	} // connProc ends
-	
+	public void run() {
+		while(s.isConnected()) {
+			String msg = null;
+			try {
+				msg = in.readLine();
+			}catch(IOException e) {
+				ta.append("읽기실패: "+ e.toString());
+			}
+			ta.append(msg+"\n");
+		}
+			
+	}
 
 
 	void sendProc() {
-		JOptionPane.showMessageDialog(null, "메세지를 전송합니다");
+//		JOptionPane.showMessageDialog(null, "메세지를 전송합니다");
+		String msg = sendTF.getText()+"\n";
+		try {
+		out.write(msg.getBytes());//스트링 못들어감 바이트배열은 들어감
+		}catch(IOException e) {
+		ta.append("쓰기실패: "+e.toString());
+		}
+		sendTF.setText(null);
 	}// sendProc ends
 	
 	

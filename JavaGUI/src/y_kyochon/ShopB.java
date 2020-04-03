@@ -21,25 +21,23 @@ public class ShopB extends JFrame implements ActionListener{
 	
 	
 	JButton cancle = new JButton("취소");
-	JList list;
+	JList listChicken;
+	JList listPrice;
 	
 	static String[] OrderChicken;
 	static int[] OrderPrice;
 	ShopB(){
 	JPanel p = new JPanel();
-	list = new JList<ArrayList>();
+	listChicken = new JList(Main.chicken.toArray());
+	listPrice = new JList(Main.price.toArray());
 	
-	for(int i=0;i<Main.chicken.size();i++) {
-		
-		list.setModel((ListModel) Main.chicken.get(i));	
-		}
 	p.setLayout(new GridLayout(1,2));
-	p.add(list);
+	p.add(listChicken);
 	p.add(cancle);
 	
-	add(p,BorderLayout.NORTH);
+	add(p,BorderLayout.CENTER);
 	setSize(500,500);
-	setVisible(true);
+	//setVisible(true);
 	setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 	
