@@ -4,11 +4,18 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.AbstractTableModel;
+
+import model.vo.Video;
+import view.VideoView.ButtonEventHandler;
 
 
 public class sellView extends JPanel {
@@ -99,6 +106,87 @@ public class sellView extends JPanel {
 		add(Right,BorderLayout.EAST);
 		
 	}
+	 public void eventProc(){
+	      ButtonEventHandler handler = new ButtonEventHandler();
+	      bVideoInsert.addActionListener(handler);
+	      bVideoModify.addActionListener(handler);
+	      bVideoDelete.addActionListener(handler);
+	      tfVideoSearch.addActionListener(handler);
+	      
+	      cbMultiInsert.addActionListener(new ActionListener() {
+	         
+	         @Override
+	         public void actionPerformed(ActionEvent e) {
+	            tfInsertCount.setEditable(cbMultiInsert.isSelected());
+	//------------------ 같은 내용            
+//	            if(cbMultiInsert.isSelected()) tfInsertCount.setEditable(true);
+//	            else tfInsertCount.setEditable(true);
+	//------------------ 같은 내용      
+//	         Object o = e.getSource();
+//	            if(o==cbMultiInsert) {
+//	               tfInsertCount.setEditable(true);
+//	            }
+	            
+	         }
+	      });
+	      
+	      tableVideo.addMouseListener(new MouseAdapter() {
+				
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int row = tableVideo.getSelectedRow();
+				int vnum = (Integer)tableVideo.getValueAt(row, 0);//0은 시퀀스 번호
+				
+				try {
+					Video v = model.selectByPK(vnum);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//Video 클래스의 각각의 멤버변수를 화면에 출력
+			}
+		});
+	   }      
+	   // 버튼 이벤트 핸들러 만들기
+	   class ButtonEventHandler implements ActionListener{
+	      public void actionPerformed(ActionEvent ev){
+	         Object o = ev.getSource();
+	         
+	         if(o==bPBuy){  
+	            buyTrade();               // 구매
+	         }
+	         else if(o==bPDelete){  
+	            deleteTrade();               // 삭제
+	         }
+	         else if(o==bPModify){  
+	            modifyTrade();               // 수정
+	         }
+	         else if(o==bPRefund){
+	        	 refundTrade();               //환불
+	         }
+	      }
+
+		private void refundTrade() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		private void modifyTrade() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		private void deleteTrade() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		private void buyTrade() {
+			// TODO Auto-generated method stub
+			
+		}
+	   }
 	   class TradeTableModel extends AbstractTableModel { 
 	        
 		      ArrayList data = new ArrayList();
