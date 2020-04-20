@@ -47,5 +47,6 @@ public int getPstock() {
 public void setPstock(int pstock) {
 		this.pstock = pstock;
 	}
-
 }
+
+

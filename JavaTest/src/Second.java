@@ -6,14 +6,14 @@ public class Second {
 		int num1=0;
 		
 		for(int i=1;i<=100;i++) {
-			if((i%3==0 || i%5==0) && i%15!=0) {
+			if((i%3!=0 || i%5!=0)) {
 				num+=i;
 			}			
 		}
 		
 		int j=1;
 		while(j<=100) {
-			if((j%3==0 || j%5==0) && j%15!=0) {
+			if(j%3!=0 || j%5!=0) {
 				num1+=j;
 			}
 			j++;

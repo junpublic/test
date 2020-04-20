@@ -4,12 +4,19 @@ public class First {
 
 	public static void main(String[] args) {
 		
-		Calendar cal = Calendar.getInstance();
-		int year = 1997;
-		int age = cal.get(Calendar.YEAR)-year;
-		System.out.println(age + " " + year);
 		
-	
+		int[] lotto = new int[6];
+		
+		for(int i=0;i<6;i++) {
+			
+			lotto[i]  = (int)(Math.random()*45)+1;
+			
+			
+		}
+		
+		for(int i=0;i<6;i++) {
+			System.out.print(lotto[i]+" ");
+		}
 	}
 
 }

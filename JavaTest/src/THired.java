@@ -1,58 +1,47 @@
 import java.util.Scanner;
 
-
 class bank {
+	String yegumju = "홍길동";
+	String gejwa="111-111-111";
+	int left=10000;
 	
-	
-	String who = "자바맨";
-	String num = "123-456";
-	int left = 10000;	
-	
-	
-	public int moneyIn(int minus){
+	int out(int minus){
+		if(left < minus){
+			left -= minus;
+		}else if ((left -= minus)<0){
+		System.out.println("잔액이 부족합니다.");
 		
-		
-		left -= minus;
-		if(left < 0) {
-			System.out.println("잔액이 부족합니다.");
-		}else {
-			System.out.println(left);
 		}
-		
 		return left;
-    }
-	public int moneyOut(int pluse){
-		Scanner sc = new Scanner(System.in);
 		
-		left += pluse;
-		System.out.println(left);
-		return left;
-    }
-
-	public String toString() {
-		return "예금주:"+who+", "+"계좌번호:"+num+", "+"잔액:"+left+"원";
 	}
+	int in(int plus) {
+		left += plus;
+		System.out.println(plus);
+		return left;
+		
+	}
+	
+	public String toString() {
+		
+		return "예금주:"+ yegumju+",계좌번호:"+gejwa +", 잔액:"+left +"원";
+		
+	}
+	
 }
 
-
 public class THired {
-
+	
 	public static void main(String[] args) {
 		bank b = new bank();
-		
-		Scanner sc = new Scanner(System.in);
-		
-		int minus =sc.nextInt();
-		b.moneyIn(minus);
-		int pluse =sc.nextInt();
-		b.moneyOut(pluse);
+		int plus = 20000;
+		int minus = 30000;
 		
 		
-		
+		b.in(plus);
+		b.out(minus);
 		System.out.println(b.toString());
 		
 	}
-
 	
 }
-

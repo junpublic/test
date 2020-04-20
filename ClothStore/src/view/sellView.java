@@ -14,6 +14,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.AbstractTableModel;
 
+import model.vo.Product;
 import model.vo.Video;
 import view.VideoView.ButtonEventHandler;
 
@@ -36,6 +37,123 @@ public class sellView extends JPanel {
 	public sellView() {
 		addLayout();
 	}
+	 public void eventProc(){
+	      ButtonEventHandler handler = new ButtonEventHandler();
+	      bVideoInsert.addActionListener(handler);
+	      bVideoModify.addActionListener(handler);
+	      bVideoDelete.addActionListener(handler);
+	      tfVideoSearch.addActionListener(handler);
+	      
+	      cbMultiInsert.addActionListener(new ActionListener() {
+	         
+	         @Override
+	         public void actionPerformed(ActionEvent e) {
+	            tfInsertCount.setEditable(cbMultiInsert.isSelected());
+	//------------------ 같은 내용            
+//	            if(cbMultiInsert.isSelected()) tfInsertCount.setEditable(true);
+//	            else tfInsertCount.setEditable(true);
+	//------------------ 같은 내용      
+//	         Object o = e.getSource();
+//	            if(o==cbMultiInsert) {
+//	               tfInsertCount.setEditable(true);
+//	            }
+	            
+	         }
+	      });
+	      
+	      tableVideo.addMouseListener(new MouseAdapter() {
+				
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int row = tableVideo.getSelectedRow();
+				int vnum = (Integer)tableVideo.getValueAt(row, 0);//0은 시퀀스 번호
+				
+				try {
+					Video v = model.selectByPK(vnum);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//Video 클래스의 각각의 멤버변수를 화면에 출력
+			}
+		});
+	   }      
+
+		// 버튼 이벤트 핸들러 만들기
+		class ButtonEventHandler implements ActionListener {
+			public void actionPerformed(ActionEvent ev) {
+				Object o = ev.getSource();
+
+				if (o == bPBuy) {
+					buyTrade(); // 구매
+				} else if (o == bPDelete) {
+					deleteTrade(); // 삭제
+				} else if (o == bPModify) {
+					modifyTrade(); // 수정
+				} else if (o == bPRefund) {
+					refundTrade(); // 환불
+				}
+			}
+
+
+	   }
+		private void buyTrade() {
+			
+			// 1. 화면 텍스트필드의 입력값 얻어오기
+			String pTrade = tfPTrade.getText();
+			String pCode = tfPCode.getText();
+			String pKind = tfPKind.getText();
+			String pName = tfPName.getText();
+			String pPrice = tfPPrice.getText();
+			String pSize= tfPSize.getText();
+			
+			Product vo = new Product();
+			vo.set
+			
+		}
+		
+		private void deleteTrade() {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		private void refundTrade() {
+			
+		}
+		
+		private void modifyTrade() {
+			// TODO Auto-generated method stub
+			
+		}
+	   class TradeTableModel extends AbstractTableModel { 
+	        
+		      ArrayList data = new ArrayList();
+		      String [] columnNames = {"거래코드","상품코드","상품명","상품가격","상품종류","사이즈","재고"};
+
+		      //=============================================================
+		      // 1. 기본적인 TabelModel  만들기
+		      // 아래 세 함수는 TabelModel 인터페이스의 추상함수인데
+		      // AbstractTabelModel에서 구현되지 않았기에...
+		      // 반드시 사용자 구현 필수!!!!
+
+		          public int getColumnCount() { 
+		              return columnNames.length; 
+		          } 
+		           
+		          public int getRowCount() { 
+		              return data.size(); 
+		          } 
+
+		          public Object getValueAt(int row, int col) { 
+		            ArrayList temp = (ArrayList)data.get( row );
+		              return temp.get( col ); 
+		          }
+		          
+		          public String getColumnName(int col){
+		             return columnNames[col];
+		          }
+		   }
 
 	public void addLayout() {
 		tfPCode			= new JTextField(20);
@@ -106,114 +224,6 @@ public class sellView extends JPanel {
 		add(Right,BorderLayout.EAST);
 		
 	}
-	 public void eventProc(){
-	      ButtonEventHandler handler = new ButtonEventHandler();
-	      bVideoInsert.addActionListener(handler);
-	      bVideoModify.addActionListener(handler);
-	      bVideoDelete.addActionListener(handler);
-	      tfVideoSearch.addActionListener(handler);
-	      
-	      cbMultiInsert.addActionListener(new ActionListener() {
-	         
-	         @Override
-	         public void actionPerformed(ActionEvent e) {
-	            tfInsertCount.setEditable(cbMultiInsert.isSelected());
-	//------------------ 같은 내용            
-//	            if(cbMultiInsert.isSelected()) tfInsertCount.setEditable(true);
-//	            else tfInsertCount.setEditable(true);
-	//------------------ 같은 내용      
-//	         Object o = e.getSource();
-//	            if(o==cbMultiInsert) {
-//	               tfInsertCount.setEditable(true);
-//	            }
-	            
-	         }
-	      });
-	      
-	      tableVideo.addMouseListener(new MouseAdapter() {
-				
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				int row = tableVideo.getSelectedRow();
-				int vnum = (Integer)tableVideo.getValueAt(row, 0);//0은 시퀀스 번호
-				
-				try {
-					Video v = model.selectByPK(vnum);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				//Video 클래스의 각각의 멤버변수를 화면에 출력
-			}
-		});
-	   }      
-	   // 버튼 이벤트 핸들러 만들기
-	   class ButtonEventHandler implements ActionListener{
-	      public void actionPerformed(ActionEvent ev){
-	         Object o = ev.getSource();
-	         
-	         if(o==bPBuy){  
-	            buyTrade();               // 구매
-	         }
-	         else if(o==bPDelete){  
-	            deleteTrade();               // 삭제
-	         }
-	         else if(o==bPModify){  
-	            modifyTrade();               // 수정
-	         }
-	         else if(o==bPRefund){
-	        	 refundTrade();               //환불
-	         }
-	      }
-
-		private void refundTrade() {
-			// TODO Auto-generated method stub
-			
-		}
-
-		private void modifyTrade() {
-			// TODO Auto-generated method stub
-			
-		}
-
-		private void deleteTrade() {
-			// TODO Auto-generated method stub
-			
-		}
-
-		private void buyTrade() {
-			// TODO Auto-generated method stub
-			
-		}
-	   }
-	   class TradeTableModel extends AbstractTableModel { 
-	        
-		      ArrayList data = new ArrayList();
-		      String [] columnNames = {"거래코드","상품코드","상품명","상품가격","상품종류","사이즈","재고"};
-
-		      //=============================================================
-		      // 1. 기본적인 TabelModel  만들기
-		      // 아래 세 함수는 TabelModel 인터페이스의 추상함수인데
-		      // AbstractTabelModel에서 구현되지 않았기에...
-		      // 반드시 사용자 구현 필수!!!!
-
-		          public int getColumnCount() { 
-		              return columnNames.length; 
-		          } 
-		           
-		          public int getRowCount() { 
-		              return data.size(); 
-		          } 
-
-		          public Object getValueAt(int row, int col) { 
-		            ArrayList temp = (ArrayList)data.get( row );
-		              return temp.get( col ); 
-		          }
-		          
-		          public String getColumnName(int col){
-		             return columnNames[col];
-		          }
-		   }
+	
 	
 }
