@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import model.vo.Product;
 
 public class ProductModel {

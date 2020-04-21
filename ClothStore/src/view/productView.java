@@ -23,7 +23,7 @@ import model.dao.ProductModel;
 
 import model.vo.Product;
 import view.sellView.ButtonEventHandler;
-import view.sellView.TradeTableModel;
+import view.sellView.SellTableModel;
 
 public class productView extends JPanel {
 	JFrame frm;
@@ -32,13 +32,14 @@ public class productView extends JPanel {
 	JTextField tfPCode, tfPKind, tfPName, tfPPrice, tfPSize;
 	JButton bPDelete, bPModify, bPInsert;
 
-	TradeTableModel tbModelVideo;
+//	SellTableModel tbModelVideo;
 	JTable tableProduct;
-	TradeTableModel tbModelTrade;
+	SellTableModel tbModelSell;
 
 	JCheckBox cbMultiInsert;
 	JTextField tfPStock;
-
+	
+	//왼쪽 테이블모델
 	ProductTableModel tbModelProduct;
 	ProductModel model;
 	// 생성자
@@ -181,7 +182,7 @@ public class productView extends JPanel {
 	}
 
 	public void modifyProduct() {
-//		
+
 
 	}
 

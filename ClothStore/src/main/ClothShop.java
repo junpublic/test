@@ -14,7 +14,7 @@ public class ClothShop extends JFrame{
 		sell = new sellView();
 		product = new productView();
 		add(sell);
-		add(product);
+//		add(product);
 		
 		setSize(800,600);
 		setVisible( true );

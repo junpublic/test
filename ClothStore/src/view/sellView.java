@@ -9,75 +9,67 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.AbstractTableModel;
 
+import model.dao.ProductModel;
+import model.dao.SellModel;
+import model.vo.Customer;
 import model.vo.Product;
-import model.vo.Video;
-import view.VideoView.ButtonEventHandler;
+
 
 
 public class sellView extends JPanel {
 	JFrame frm;
-//	String pcode; //상품코드
-//	String pkind; //상품종류
-//	String pname; //상품명
-//	int pprice;   //상품가격
-//	String psize; //사이즈
-//	int pstock;	  //재고
+
 	//변수들
-	JTextField tfPCode,tfPKind,tfPName,tfPPrice,tfPSize,tfPTrade;
-	JButton bPBuy,bPDelete,bPRefund,bPModify;
-	TradeTableModel tbModelVideo;
-	JTable  tableTrade;
-	TradeTableModel tbModelTrade;
+	JTextField tfPCode,tfPSell,tfPStock,tfPTotal;
+	JButton bPBuy,bPDelete,bPRefund,bPInsert;
+	
+	
+	JTable  tableSell;
+	
+	SellTableModel tbModelSell;
+	
+	JList ShopBasket_name;//장바구니 리스트
+	JList ShopBasket_price;//장바구니 가격리스트
+	JList ShopBasket_stock;//장바구니 수리스트
+	
+	SellModel model;
+	int total =0;
+	int i=0;
+	//장바구니 내용 저장
+	Vector<String> sellNum= new Vector<String>(); 
+	Vector<String> sellName= new Vector<String>(); 
+	Vector sellStock= new Vector(); 
+	Vector sellProduct= new Vector(); 
 	
 	public sellView() {
 		addLayout();
+		eventProc();
+		connectDB();
 	}
+	public void connectDB() {
+		 try {
+	         model = new SellModel();
+	      } catch (Exception e) {
+	         System.out.println("Video 드라이버 로딩 실패" + e.getMessage());
+	         e.printStackTrace();
+	      }
+		
+	}
+	
 	 public void eventProc(){
 	      ButtonEventHandler handler = new ButtonEventHandler();
-	      bVideoInsert.addActionListener(handler);
-	      bVideoModify.addActionListener(handler);
-	      bVideoDelete.addActionListener(handler);
-	      tfVideoSearch.addActionListener(handler);
-	      
-	      cbMultiInsert.addActionListener(new ActionListener() {
-	         
-	         @Override
-	         public void actionPerformed(ActionEvent e) {
-	            tfInsertCount.setEditable(cbMultiInsert.isSelected());
-	//------------------ 같은 내용            
-//	            if(cbMultiInsert.isSelected()) tfInsertCount.setEditable(true);
-//	            else tfInsertCount.setEditable(true);
-	//------------------ 같은 내용      
-//	         Object o = e.getSource();
-//	            if(o==cbMultiInsert) {
-//	               tfInsertCount.setEditable(true);
-//	            }
-	            
-	         }
-	      });
-	      
-	      tableVideo.addMouseListener(new MouseAdapter() {
-				
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				int row = tableVideo.getSelectedRow();
-				int vnum = (Integer)tableVideo.getValueAt(row, 0);//0은 시퀀스 번호
-				
-				try {
-					Video v = model.selectByPK(vnum);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				//Video 클래스의 각각의 멤버변수를 화면에 출력
-			}
-		});
+	      bPInsert.addActionListener(handler);
+	      bPDelete.addActionListener(handler);
+	      bPBuy.addActionListener(handler);
+	      bPRefund.addActionListener(handler);
+	      tfPCode.addActionListener(handler);
+	     
 	   }      
 
 		// 버튼 이벤트 핸들러 만들기
@@ -86,47 +78,116 @@ public class sellView extends JPanel {
 				Object o = ev.getSource();
 
 				if (o == bPBuy) {
-					buyTrade(); // 구매
+					buySell(); // 구매
 				} else if (o == bPDelete) {
-					deleteTrade(); // 삭제
-				} else if (o == bPModify) {
-					modifyTrade(); // 수정
+					deleteSell(); // 삭제
+				} else if (o == bPInsert) {
+					addSell(); // 삽입
 				} else if (o == bPRefund) {
-					refundTrade(); // 환불
+					refundSell(); // 환불
+				}else if(o == tfPCode) {
+					searchProduct(); 
 				}
 			}
 
 
 	   }
-		private void buyTrade() {
-			
-			// 1. 화면 텍스트필드의 입력값 얻어오기
-			String pTrade = tfPTrade.getText();
+		public void searchProduct() {
 			String pCode = tfPCode.getText();
-			String pKind = tfPKind.getText();
-			String pName = tfPName.getText();
-			String pPrice = tfPPrice.getText();
-			String pSize= tfPSize.getText();
 			
+			
+				try {
+					tbModelSell.data = model.selectList(pCode);
+					tableSell.setModel(tbModelSell);
+					tbModelSell.fireTableDataChanged();
+				} catch (Exception e) {
+					System.out.println("상품검색 실패:"+e.getMessage());
+				}
+				
+				tfPCode.setText("");
+		
+		}
+		//추가
+		public void addSell() {
+			// 1. 입력한 전화번호 얻어오기
+			String code = tfPCode.getText();
+			String stock = tfPStock.getText();
+			Product vo = null;
+			//호출
+			try {
+				vo = model.searchProduct(code);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			String name = vo.getPname();
+			int price = vo.getPprice();
+			
+			sellNum.add(code);
+			sellName.add(name);
+			sellStock.add(stock);
+			sellProduct.add(price*Integer.parseInt(stock));
+			
+			System.out.println(sellNum);
+			System.out.println(sellName);
+			System.out.println(sellProduct);
+					
+			ShopBasket_name.setListData(sellName); //리스트에 값 업데이트
+			ShopBasket_price.setListData(sellProduct);
+			ShopBasket_stock.setListData(sellStock);
+			
+			
+			
+			total +=(int) sellProduct.get(i);
+			i++;
+			
+			tfPTotal.setText(String.valueOf(total));
+			tfPCode.setText("");
+			tfPStock.setText("1");
+			
+		}
+		//구매
+		public void buySell() {
 			Product vo = new Product();
-			vo.set
+			for(int i=0;i<sellNum.size();i++) {
+				
+				vo.setPcode(sellNum.get(i));			
+				vo.setPprice((int) sellProduct.get(i));
+				vo.setPstock((int) sellStock.get(i));;
+				
+			}
+			
+		}
+		//삭제
+		public void deleteSell() {
+			int temp =ShopBasket_name.getSelectedIndex(); //int형 임시변수 temp에 현재 선택된 리스트의 번호를 저장
+			
+			total -=(int) sellProduct.get(temp);
+			
+			sellNum.remove(temp);
+			sellName.remove(temp);
+			sellProduct.remove(temp);
+			sellStock.remove(temp);
+			System.out.println(temp);
+			System.out.println(sellNum);
+			System.out.println(sellName);
+			System.out.println(sellProduct);
+			
+			
+			i--;
+			
+			
+			tfPTotal.setText(String.valueOf(total));
+			ShopBasket_name.setListData(sellName); //리스트에 값 업데이트
+			ShopBasket_price.setListData(sellProduct);
+			ShopBasket_stock.setListData(sellStock);
+		}
+		//환불
+		public void refundSell() {
 			
 		}
 		
-		private void deleteTrade() {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		private void refundTrade() {
-			
-		}
-		
-		private void modifyTrade() {
-			// TODO Auto-generated method stub
-			
-		}
-	   class TradeTableModel extends AbstractTableModel { 
+	   class SellTableModel extends AbstractTableModel { 
 	        
 		      ArrayList data = new ArrayList();
 		      String [] columnNames = {"거래코드","상품코드","상품명","상품가격","상품종류","사이즈","재고"};
@@ -154,49 +215,76 @@ public class sellView extends JPanel {
 		             return columnNames[col];
 		          }
 		   }
+	  
 
 	public void addLayout() {
-		tfPCode			= new JTextField(20);
-		tfPKind			= new JTextField(20);
-		tfPName			= new JTextField(20);
-		tfPPrice		= new JTextField(20);
-		tfPSize			= new JTextField(20);
-		tfPTrade		= new JTextField(20);
+		//텍스트필드
+		tfPCode			= new JTextField(10);	
+		tfPSell			= new JTextField(10);
+		tfPStock		= new JTextField("1",10);
+		tfPTotal		= new JTextField(10);	
 		
+		//버튼
 		bPBuy			= new JButton("구매");
 		bPDelete			= new JButton("삭제");
-		bPModify			= new JButton("수정");
+		bPInsert			= new JButton("추가");
 		bPRefund			= new JButton("환불");
 		
+		//장바구니
+		ShopBasket_name 	= new JList();	
+		ShopBasket_name.setLayout(new FlowLayout());
+		ShopBasket_name.setVisible(true);
+		ShopBasket_name.setFixedCellWidth(10);
+		ShopBasket_name.setFixedCellHeight(30);
 		
-		tbModelTrade = new TradeTableModel();
-		tableTrade = new JTable(tbModelTrade);
+		ShopBasket_price 	= new JList();	
+		ShopBasket_price .setLayout(new FlowLayout());
+		ShopBasket_price .setVisible(true);
+		ShopBasket_price .setFixedCellWidth(10);
+		ShopBasket_price .setFixedCellHeight(30);
+		
+		ShopBasket_stock 	= new JList();	
+		ShopBasket_stock.setLayout(new FlowLayout());
+		ShopBasket_stock.setVisible(true);
+		ShopBasket_stock.setFixedCellWidth(10);
+		ShopBasket_stock.setFixedCellHeight(30);
+		
+		tbModelSell = new SellTableModel();
+		tableSell = new JTable(tbModelSell);
 		
 		//오른쪽 영역
 		JPanel Right = new JPanel();
 		Right.setLayout(new BorderLayout());
+			//오른쪽위
 			JPanel Right_up = new JPanel();
-				Right_up.setLayout(new GridLayout(7,2));
-				Right_up.add(new JLabel("거래코드"));
-				Right_up.add(tfPTrade);
-				Right_up.add(new JLabel("상품코드"));
-				Right_up.add(tfPCode);
-				Right_up.add(new JLabel("상품명"));
-				Right_up.add(tfPName);
-				Right_up.add(new JLabel("상품가격"));
-				Right_up.add(tfPPrice);
-				Right_up.add(new JLabel("상품종류"));
-				Right_up.add(tfPKind);
-				Right_up.add(new JLabel("사이즈"));
-				Right_up.add(tfPSize);
-				Right_up.add(new JLabel("수량"));
-				//Right.add();
+				Right_up.setLayout(new GridLayout(2,1));
+				JPanel Right_up_up = new JPanel();
+				 	Right_up_up.setLayout(new BorderLayout());
+					Right_up_up.add(new JLabel("장바구니"),BorderLayout.NORTH);
+					JPanel Right_up_up_list = new JPanel();
+						Right_up_up_list.setLayout(new GridLayout(1,3));
+						Right_up_up_list.add(ShopBasket_name,BorderLayout.CENTER);
+						Right_up_up_list.add(ShopBasket_price,BorderLayout.CENTER);
+						Right_up_up_list.add(ShopBasket_stock,BorderLayout.CENTER);
+					Right_up_up.add(Right_up_up_list);
+				JPanel Right_up_down = new JPanel();
+					Right_up_down.setLayout(new GridLayout(4,2));
+					Right_up_down.add(new JLabel("총합"));
+					Right_up_down.add(tfPTotal);
+					Right_up_down.add(new JLabel("거래코드"));
+					Right_up_down.add(tfPSell);
+					Right_up_down.add(new JLabel("상품코드"));
+					Right_up_down.add(tfPCode);				
+					Right_up_down.add(new JLabel("수량"));
+					Right_up_down.add(tfPStock);
+				Right_up.add(Right_up_up);
+				Right_up.add(Right_up_down);
 				
 			
-		
+				//오른쪽 아래
 			JPanel Right_down = new JPanel();
 				Right_down.setLayout(new GridLayout(2,2));
-				Right_down.add(bPModify);
+				Right_down.add(bPInsert);
 				Right_down.add(bPDelete);
 				Right_down.add(bPBuy);
 				Right_down.add(bPRefund);
@@ -206,17 +294,15 @@ public class sellView extends JPanel {
 		//왼쪽영역
 		 JPanel Left= new JPanel();	     
 	      
-	         // 오른쪽 영역 위
-	        
 	         
 	      Left.setLayout(new BorderLayout());//센터 노스 값을 주기 위해 BORDERLAYOUT사용	      
 	      
-	      Left.add(new JScrollPane(tableTrade), BorderLayout.CENTER);
+	      Left.add(new JScrollPane(tableSell), BorderLayout.CENTER);
 	      
 	      // 영역을 2개로 나눔
-	      setLayout(new GridLayout(1,2));
+	      setLayout(new BorderLayout());
 	     
-	      add(Left);
+	      add(Left,BorderLayout.CENTER);
 		
 		
 		
@@ -224,6 +310,6 @@ public class sellView extends JPanel {
 		add(Right,BorderLayout.EAST);
 		
 	}
-	
+	 
 	
 }
