@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 메뉴판</title>
+
+<link herf='' rel ='stylesheet' type = 'text/css'>
+
+<script src="text/javascript">//웹으로 연결할떄는  src
+window.onload = function menu() {
+	document.getElementById('menu1').onclick = function(){
+		alert("ㅎㅎㅎ");
+	}
+}
+
+
+
+
+</script>
+
+</head>
+<body>
+
+<table border='1'>
+	<tr>
+		<td id='menu1' class='menu' ><button type="button" ><img src="../img/나이트로 바닐라 크림.jpg"  alt=""><br/>나이트로 바닐라 크림<br/>6000원</button><td/>
+		<td id='menu2' class='menu'><button type="button" ><img src="../img/나이트로 콜드 브루.jpg"  alt=""><br/>나이트로 콜드 브루<br/>5000원</button><td/>
+		<td id='menu3' class='menu'><button type="button" ><img src="../img/돌체 콜드 브루.jpg"  alt=""><br/>돌체 콜드 브루<br/>4000원</button><td/>
+	</tr>
+	<tr>
+		<td id='menu4' class='menu'><button type="button" ><img src="../img/바니랄 크림 콜드 브루.jpg"  alt=""><br/>바니랄 크림 콜드 브루<br/>7000원</button><td/>
+		<td id='menu5' class='menu' ><button type="button" ><img src="../img/제주 비자림 콜드 브루.jpg"  alt=""><br/>제주 비자림 콜드 브루<br/>8000원</button><td/>
+		<td id='menu6' class='menu'><button type="button" ><img src="../img/초콜릿 블랙 콜드 브루.jpg"  alt=""><br/>초콜릿 블랙 콜드 브루<br/>8000원</button><td/>
+	</tr>
+<!-- 	<tr> -->
+<!-- 		<td id='menu7' class='menu'><button type="button"><img src="../img/콜드 브루 몰트.jpg"  alt=""><br/>콜드 브루 몰트<br/>4000원</button> -->
+<!-- 		<td id='menu8' class='menu'><button type="button"><img src="../img/콜드 브루 플로트.jpg"  alt=""><br/>콜드 브루 플로트<br/>3000원</button> -->
+<!-- 		<td id='menu9' class='menu'><button type="button"><img src="../img/콜드 브루.jpg"  alt=""><br/>콜드 브루<br/>5000원</button> -->
+<!-- 	</tr> -->
+	<tr>
+		<td colspan='3'>
+			갯수 :  <select id='count'>
+							<option value='1'>1</option>
+							<option value='2'>2</option>
+							<option value='3'>3</option>
+							<option value='4'>4</option>
+						</select>
+			<input type='button'	value='확인'  id='btn'/>		
+			총합 : <input type='text'  id='total'/>원
+		</td>
+	</tr>
+</table>
+<form>
+ <input type="button" value='버튼' onclick= 'test()' >
+</form>
+<div id='content'></div>
+</body>
+</html>

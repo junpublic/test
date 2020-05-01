@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 이벤트 핸들러 연결 </title>
+
+<script type="text/javascript">
+	
+window.onload = function{
+	var btn = document.getElementByID('btn');
+	btn.onclink = function btn_click(){
+		alert('이벤트');
+	}		
+	
+};
+
+
+// function init(){
+// 	var btn = document.getElementByID('btn');
+// 	btn.onclink = btn_click;//연결은 ()를 쓰지 않아야 한다.
+		
+// 	function btn_click(){
+// 		alert('이벤트');
+// 	}
+	
+// }
+
+	
+	
+	
+</script>
+
+
+
+  </head>
+ <body>
+	<input type='button' value='눌러'  id='btn' />
+ </body>
+</html>

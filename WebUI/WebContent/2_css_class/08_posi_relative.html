@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 상대배치 </title>
+<style type="text/css">
+div{
+height:150px;
+width:100px;
+border:1px solid lightgray;
+
+text-align:center;
+color:white;
+background: aqua;
+
+ display:inline-block ;  /* 개행이 안되게 해줌 그냥 인라인 하면 다 깨져버림 */
+}
+
+div:nth-of-type(even):hover{
+	background:orange;
+	position:relative;/*  초기위치 상태에서 상하좌우로 위치를 이동 */
+	left:20px; top:20px;
+}
+
+/*홀수요소에서 마우스 올렸을 떄 배경색 변경하고 카드를 위로 올리게 지정*/
+
+div:nth-of-type(odd):hover{
+	background:blue;
+	position:relative;/*  초기위치 상태에서 상하좌우로 위치를 이동 */
+	left:-20px; top:-20px; 
+}
+
+</style>
+</head>
+<body>
+	<h3> 나의 취미 </h3>
+	<hr>
+	<div>소풍</div>
+	<div>나들이</div>
+	<div>책보기</div>
+	<div>멍때리기</div>
+	<div>맛집탐방</div>
+</body>
+</html>

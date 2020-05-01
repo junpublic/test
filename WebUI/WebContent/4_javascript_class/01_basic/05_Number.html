@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> Number 형과 형변환 </title>
+<script type="text/javascript">
+
+
+// 1. 숫자 형식 메소드 
+var su = 123.456789;
+document.writeln( su.toExponential(2)  + "<br/>" );	
+document.writeln( su.toFixed(3)  + "<br/>" );	//소수점 자리수 3밑으로는 반올림
+document.writeln( su.toFixed(7) + "<br/>" );	
+document.writeln( su.toPrecision(6)  + "<br/>" );	//전체숫자에서 6번째 이후 반올림 
+document.writeln( su.toPrecision(10)  + "<br/>" );	
+
+//-------------------------------------------------
+// 2. 형변환
+var n = '0770';// n : stirng
+document.writeln(typeof n + "<br/>");
+document.writeln(Number(n)+"<br/>"); //아래처럼 넣어버리면 간단하게 형변환이 가능하다.
+document.writeln(parseInt(n)+"<br/>");
+document.writeln(parseFloat(n)+"<br/>");
+
+
+var n = '123acb';// n : stirng
+document.writeln(typeof n + "<br/>");
+document.writeln(Number(n)+"<br/>"); // NaN: not a number 숫자가 아니라는 뜻
+document.writeln(parseInt(n)+"<br/>");//알아서 숫자만 골라서 바꿔버림
+document.writeln(parseFloat(n)+"<br/>");//알아서 숫자만 골라서 바꿔버림
+document.writeln("<br/>");
+
+
+//**********************************
+//number + string = string
+//number -string =  number
+document.writeln(123+'4');//1234
+document.writeln('<hr/>');
+document.writeln(123-'4');//119
+document.writeln("<br/>");
+
+document.writeln(typeof (123+'4'));//string
+document.writeln('<hr/>');
+document.writeln(typeof (123-'4'));//number
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

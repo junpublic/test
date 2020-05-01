@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>old form</title>
+</head>
+<body>
+<form id="myform" action="#"><!-- id=유일해야됨 class= 중복가능   action="#"= 자기자신을 불러옴 ,디폴트라 없어도됨-->
+	<label for="email">email</label><!--  for="email" 과 id="email"가 같아야 같은걸로 인식-->
+	<input type="text" id="email" name="email">
+	<input type="submit">
+</form>
+</body>
+<script>
+	document.querySelector("#myform").addEventListener("submit", function(e){
+		var email = document.querySelector("#email");
+		var isValidate = false;
+		var regexp = /[a-z]+[a-z0-9]*\.?[a-z0-9]*@[a-z0-9]+\.?[a-z0-9]*/i;
+		 if(!regexp.test(email.value)){
+			alert("이메일 형식이 다릅니다.");
+			e.preventDefault();
+		} 
+	});
+</script>
+</html>

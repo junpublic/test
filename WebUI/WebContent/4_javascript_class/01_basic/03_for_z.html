@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>03_for_z.html</title>
+<script type="text/javascript">
+document.write('<table border="2">');//''과  ""를 충돌나지 않게 잘 석어서 써야한다.
+var cnt =1;
+for(var i=0;i<10;i++){
+	document.write('<tr>');
+	for(var j=0;j<10;j++){
+		document.write('<td>'+cnt+'</td>');		
+		cnt++;
+	}
+	document.write('</tr>');
+}
+
+document.write('<table border="2">');//''과  ""를 충돌나지 않게 잘 석어서 써야한다.
+document.write('<tr>');
+for(var i=1;i<26;i++){	
+	document.write('<td>'+i+'</td>');	
+	if(i%5==0){
+		document.write('</tr>');
+	}
+	
+}
+
+document.write('</table>');
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

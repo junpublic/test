@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>06_html5_simpleform.html</title>
+</head>
+<body>
+
+<form action = '' method= 'get'>
+	<fieldset>
+		<legend>회원가입</legend>
+		<ol>
+			<li>
+				<label for = 'irum'>이름</label><input id= 'irum' name='irum' type = 'text' />
+			</li>
+			<li>
+				<label for = 'gender'>성별</label>
+				<input type="radio" id = 'gender'name = 'gender' value = '남자' checked = "checked">남자			
+				<input type="radio" id = 'gender'name = 'gender' value = '여자'>여자
+			</li>
+			
+			<li>
+				<label for="job">직업</label>
+				
+				<select id="job">
+				  <option id ="programer" name ="programer"value="programer">programer</option>
+				  <option id ="fighter" name ="fighter"value="fighter">fighter</option>
+				  <option id ="doctor" name ="doctor"value="doctor">doctor</option>
+				  <option id ="homeless" name ="homeless"value="homeless">homeless</option>
+				</select>
+				
+			</li>
+			<!-- 웹과 앱 -->
+			<li>
+				<label for = "">여행하고 싶은 나라?</label><input type = 'text' list = "countries">
+				<datalist id = "countries">
+					<option>가나</option>
+					<option>제주도</option>
+					<option>남극</option>
+				</datalist>
+			</li>
+			
+			<li>
+				<form>
+					  <input type="checkbox" id="sleep" name="sleep" value="sleep"> <label for="sleep"> 잠자기
+					  <input type="checkbox" id="eat" name="eat" value="eat"> <label for="eat"> 먹기</label>
+					  <input type="checkbox" id="breath" name="breath" value="breath"> <label for="breath"> 숨쉬기</label>					  
+					  <input type="checkbox" id="be_stupid" name="be_stupid" value="be_stupid"><label for="be_stupid"> 멍때리기</label>
+					  
+				</form>
+			</li>
+			<li>
+				<label for = 'love'>애인</label>
+				<input type="radio" id = 'love' name = 'love' value = '있다' checked = "checked">있다		
+				<input type="radio" id = 'love' name = 'love' value = '없다'>없다
+			</li>
+			<li>
+				<input type='submit' value="서버에전송"/>
+				<input type='reset' value="취소"/>
+			</li>
+		</ol>
+	</fieldset>
+
+</form>
+
+</body>
+</html>

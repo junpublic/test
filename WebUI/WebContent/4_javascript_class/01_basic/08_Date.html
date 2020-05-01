@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Date 객체</title>
+<script type="text/javascript">	
+ 	
+	var d = new Date('2020/05/03');
+// 	var d = new Date();
+	document.writeln( d  + '<br/>');
+	document.writeln( d.getYear()  + '<br/>');//2000년 이후를 생각 안해서 이상하게 옴
+	document.writeln( d.getFullYear()  + '<br/>');
+	document.writeln( d.getMonth()  + '<br/>');//자바는 0부터 월을 
+	document.writeln( d.getDate()  + '<br/>');
+	document.writeln( d.getDay()  + '<br/>');//월:1 일:0 으로 나옴
+
+	
+	var today = new Date();
+	today.setFullYear(2020);
+	today.setMonth(4);
+	today.setDate(1);
+	
+	document.writeln('<hr/>'+today+'<br/>');//<hr/>는 가로선
+	document.writeln('<hr/>'+today.toLocaleString()+'<br/>');
+	document.writeln('<hr/>'+today.toGMTString()+'<br/>');
+	document.writeln('<hr/>'+today.toDateString()+'<br/>');
+	//3달전 날짜 구하기
+	today.setMonth(today.getMonth()-3);
+	document.writeln('<hr/>'+today.toLocaleString()+'<br/>');
+	//20일전 날짜 구하기
+	today.setDate(today.getDate() -20);
+	document.writeln('<hr/>'+today.toLocaleString()+'<br/>');
+	
+	//월의 마지막 날 구하기
+	var today = new Date();
+	today.setDate(0);//전월으 마지막 날 구하기//데이트를 0으로 해버리면 다음달의 마지막날로 자동세팅된다.
+	document.writeln('<hr/>'+today.toLocaleString()+'<br/>');
+	
+	
+	
+	
+	</script>
+
+</head>
+<body>
+
+</body>
+</html>

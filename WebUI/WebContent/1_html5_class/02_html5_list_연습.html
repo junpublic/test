@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>02_html5_list_연습.html</title>
+</head>
+<body>
+
+<h2>현재 이 페이지에서 출력</h2>
+<img src = '/WebUI/images/sample/sensitive.jpg'>
+<audio src = '/WebUI/media/IU() _ Blueming().mp3'></audio>
+
+<audio controls>
+  <source src="/WebUI/media/IU() _ Blueming().mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+<video width="320" height="240" controls>
+  <source src="/WebUI/media/ssg.mp4" type="video/mp4">
+</video>
+
+<iframe src="./01_html5_section.html" style="height:200px;width:300px;"></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OBecbKbtcbI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr/>
+
+
+<ul>
+
+<!-- 상대경로  -->
+<li><a href ='../images/sample/sensitive.jpg'>이미지</a></li>
+<li><a href ='../media/IU() _ Blueming().mp3'>음성파일</a></li>
+<li><a href ='../media/ssg.mp4'>동영상파일</a></li>
+<li><a href ='./01_html5_section.html'>문서(01_html_section.html)</a></li>
+</ul>
+
+
+<!-- 절대경로 -->
+<ul>
+<li><a href ='/WebUI/images/sample/sensitive.jpg'>이미지파일</a></li>
+<li><a href ='/WebUI/media/IU() _ Blueming().mp3'>음성파일</a></li>
+<li><a href ='/WebUI/media/ssg.mp4'>동영상파일</a></li>
+<li><a href ='/WebUI/WebContent/1_html5_class/01_html5_section.html>문서(01_html_section.html)</a></li>
+</ul>
+
+</body>
+</html>

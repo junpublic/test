@@ -1,0 +1,42 @@
+<!-- 
+	display:block			:		 항상 새라인에서 시작하고 옆에 다른 요소 배치 안됨
+											width, height, padding, margin, border 조절 가능
+	display:inline		:		 새라인에서 시작 못하고 옆에 다른 요소와 배치 가능
+											width, height, padding, margin, border 조절 불가능
+	display:inline-block : 	새라인에서 시작 못하고 옆에 다른 요소와 배치 가능
+											width, height, padding, margin, border 조절 가능
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 박스의 유형 제어 - display </title>
+
+<style type="text/css">
+
+div div{
+margin : 20px; padding :30px;
+
+display:inline-block;  
+} 
+
+/* 화면에서 스페이드 3 카드 없에기 */
+
+/* div>div:nth-child(2){display:none;  } /* 화면에서 안보이게함 display: none */ 
+div>div:nth-child(2){visibility:hidden;  }  /* 화면에 공간은 놔두고 안보이게됨 */
+
+
+</style>
+
+</head>
+<body>
+	<hr/>
+	<div style="background : orange">
+	<div><img src='./img/spade-2.png'  width='200px' height='300px'/></div>
+	<div><img src='./img/spade-3.png'  width='200px' height='300px'/></div>
+	<div><img src='./img/spade-7.png'  width='200px' height='300px'/></div>
+
+</div>
+
+</body>
+</html>
