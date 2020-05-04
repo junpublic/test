@@ -4,14 +4,29 @@
 <meta charset="euc-kr">
 <title> window 예제 </title>
 <script type="text/javascript">
+
+window.onload = function() {
+	
+
+	var sel = document.querySelector("#chooseSite");
+	sel.onchange = showSite;
+	
 	function showSite()
 	{
-		/*
-		1. 선택한 옵션의 값(url)을 얻어온다.
-		2. location 객체의 href 프로퍼티에 url을 지정
-		*/
+		setTimeout(	function(){//window. 생략 가능
+			
+//	 		1. 선택한 옵션의 값(url)을 얻어온다.
+//	 		window.location.href  = document.frm.chooseSite.value;
+			location.replace(document.frm.chooseSite.value);//페이지 뒤로가기 버튼을 비활성화시킴
+			
+//	 		2. location 객체의 href 프로퍼티에 url을 지정
+			
+
+		},2000);//test를 부르는데 2초 후에 부른다.
 
 	}
+
+};
 </script>
 </head>
 <body>

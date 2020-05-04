@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>9_연습_window.html</title>
+<script type="text/javascript">
+window.onchange = function() {
+	var ddo = opener.document.getElementById('ddo').value;
+	document.getElementById('local').value=ddo;
+}
+window.onload = function() {
+// 	opener.document.get
+
+	var site = document.frm.site;
+	for(var i=0;i<site.length;i++){
+		site[i].onclick = function() {
+			switch(this.value){
+			//**************************** opener
+			case '0': opener.document.getElementById('local').value='가산';  break;//자기자신의 값
+			case '1': opener.document.getElementById('local').value='판교'; break;
+			case '2': opener.document.getElementById('local').value='부평'; break;
+			}
+		}
+	}
+}
+	<!--
+			
+	//-->
+</script>
+</head>
+<body>
+<form name="frm">
+<input type="text" id="local" value=""><br>
+		<input type="radio" name="site" value='0'> 가산 <br>
+		<input type="radio" name="site" value='1' > 판교 <br>
+		<input type="radio" name="site" value='2'> 부평 <br>
+</body>
+</html>

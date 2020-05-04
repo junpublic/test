@@ -5,8 +5,8 @@
 <title>기존 노드 치환/삭제하기</title>
 </head>
 <body>
-	<ul id="list">
-		<li><a href="JavaScript:void(0)" data-isbn="php">
+	<ul id="list"><!-- ul 언오더 리스트 -->
+		<li><a href="JavaScript:void(0)" data-isbn="php"><!--href="JavaScript:void(0)" 본연의 이벤트 못하게 처리? -->
 				개정3판 기초PHP</a></li>
 		<li><a href="JavaScript:void(0)" data-isbn="java">
 				Java포켓 레퍼런스</a></li>
@@ -19,6 +19,6 @@
 	</ul>
 	<input id="del" type="button" value="삭제" disabled />
 	<div id="pic"></div>
-	<script src="scripts/replace.js"></script>
+	<script src="scripts/replace.js"></script><!--'/'로 시작 안하면 상대경로  //window.onload 안써도됨 밑에 써서 -->
 </body>
 </html>

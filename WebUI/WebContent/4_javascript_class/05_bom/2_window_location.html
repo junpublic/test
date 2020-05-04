@@ -1,6 +1,6 @@
 <!-- 
 	1. 새로운 창을 연다
-		창변수 = window.open ( "URL", "창이름", "옵션지정" )
+		창변수 = window.open ( "URL", "창이름", "옵션지정" )//"창이름"은 공백으로 줘도 된다.
 	
 			* 옵션
 			direction='yes/no'	: 디렉토리바 표시 여부
@@ -27,15 +27,15 @@
 <meta charset="UTF-8">
 <title> window 예제 </title>
 <script type="text/javascript">
-	function showSite()
-	{
-		/*
-		1. 선택한 값의 인덱스를 얻어온다.
-		2. 각각의 인덱스에 맞는 새로운 창을 연다
-			[예] 인덱스 값이 1이라면 http://www.daum.net으로 창을 연다
-		*/
-	
+window.onload= function() {
+	var site = document.frm.chooseSite;
+	site.onchange = function(){
+		var url=site.value;//고른 값을 가져옴
+		var winObj = window.open (url, "", "width = 500, height = 400" )//"창이름"은 공백으로 줘도 된다.//새창을 띄운다.
+		winObj.moveTo(screen.availWidth / 4, screen.availHeight/4);//창이 뜨는 위치를 지정함
 	}
+	
+}
 </script>
 </head>
 <body>
@@ -43,9 +43,9 @@
 		<h1> 이동하길 원하는 페이지를 선택하세요 </h1>
 		<select name="chooseSite">
 			<option>골라 골라</option>
-			<option>다음네</option>
-			<option>네이바</option>
-			<option>네이또</option>
+			<option value="http://www.daum.net">다음네</option>
+			<option value="http://www.naver.com">네이바</option>
+			<option value="http://www.nate.com">네이또</option>
 		</select>
 	</form>
 </body>

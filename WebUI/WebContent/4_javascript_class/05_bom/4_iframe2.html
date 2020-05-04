@@ -9,10 +9,13 @@ window.onload = function(){
 	var site = document.frm.site;
 	for(var i=0;i<site.length;i++){
 		site[i].onclick = function(){
-			document.getElementById('ifrm').setAttribute('src',site.value);//속성값은 setAttribute로 설정해야 바꿀 수 있다.
+			ifrm.fm.result.value = site.value;
 		}
 	}
 }
+	function changeSite(){
+		
+	}
 </script>
 </head>
 <body>
@@ -21,11 +24,12 @@ window.onload = function(){
 		<input type="radio" name="site"  value='http://www.daum.net'> 다음 <br>
 		<input type="radio" name="site"  value='http://www.naver.com'> 네이트 <br>
 		<input type="radio" name="site"  value='http://www.nate.com'> 네이버 <br>
+		결과받기 : <input type='text' name='result' size='20'/>
 		<br/>
 		<br/>
 </form>
 
-<iframe id="ifrm"	width="420" height="315" src="4_sub.html"><!-- iframe는 id값으로만 가져올 수 있다. -->
+<iframe name='ifrm'	width="420" height="315" src="4_sub.html">
 </iframe>
 
 </body>

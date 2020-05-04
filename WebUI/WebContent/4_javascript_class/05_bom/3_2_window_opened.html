@@ -4,6 +4,19 @@
 <meta charset="UTF-8">
 <title> 새로 열려진 창 </title>
 <script type="text/javascript">
+window.onload = function() {
+	var site = document.frm.site;
+	for(var i=0;i<site.length;i++){
+		site[i].onclick = function() {
+			switch(this.value){
+			//**************************** opener
+			case '0': opener.location.href='http://www.daum.net'; break;//자기자신의 값
+			case '1': break;
+			case '2': break;
+			}
+		}
+	}
+}
 	<!--
 			
 	//-->
