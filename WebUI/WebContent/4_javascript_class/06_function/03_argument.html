@@ -5,7 +5,52 @@
 <title> 03_argument.html </title>
 <script type="text/javascript">
 
-//@함수의 인자는 갯수를 체크하지 않는다.
+ //@함수의 인자는 갯수를 체크하지 않는다.
+// function mul(first,second) {
+// 	return first*second;
+// }
+ //리터럴형
+/* var mul = function(first,second) {
+	return first*second;
+}
+document.write('곱은 '+ mul(3,4) +"<br/>");
+document.write('곱은 '+ mul(3,4,5) +"<br/>");//함수값을 초과하는 값을 넣어도 뒷값은 무시하고 잘 들어감
+document.write('곱은 '+ mul(3) +"<br/>");//연산이 불가하니 NaN이 나온다.  */
+
+/* function mul(args) {
+	return args.first*args.second;//안에있는 객체를 이렇게 뽑아올 수 있음
+}
+var obj = {first:3, second:4};//객체를 넣어줌]
+document.write('곱은'+mul(obj)+"<br/>"); */
+
+//특별 객체 : arguments = 인자를 관리해주는 특별한놈
+/* function func() {
+	document.write(arguments+"<br/>");
+	console.log(arguments);
+}
+func(100,200); */
+
+/* function zero(){
+    console.log(
+        'zero.length', zero.length,
+        'arguments', arguments.length
+    );
+}
+function one(arg1){
+    console.log(
+        'one.length', one.length,
+        'arguments', arguments.length
+    );
+}
+function two(arg1, arg2){
+    console.log(
+        'two.length', two.length,
+        'arguments', arguments.length
+    );
+}
+zero(); // zero.length 0 arguments 0 
+one('val1', 'val2');  // one.length 1 arguments 2 
+two('val1');  // two.length 2 arguments 1 */
 
 </script>
 </head>

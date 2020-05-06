@@ -4,7 +4,25 @@
 	<meta charset="UTF-8">
 	<title> 파라메터 인자</title>
 	<script>
-
+	//call by value: 함수의 인자가 기본형인 경우 = 인자값만 가져와서 지역변수로 만들어서 사용하기 때문에 원본에 영향을 주지 않는다.
+	//call by reference: 함수의 인자가 참조형인 경우 = 원본과 같은 주소를 가르켜서 값이 같이 변한다.
+	
+	var pri = 10;//원본
+	function priParam(pri){//지역변수에 원본값을 가져옴
+		pri--;//지역변수 감소
+		return pri;//지역변수 리턴
+	}
+	document.write('기본형인자1>' +priParam(pri)	+'<br/>');//9 감소된 지역변수값이 나온다.
+	document.write('기본형인자2>' +pri	+'<br/>');//9인줄 알았지만 10임 왜냐하면 함수에서는 원본을 가져와서 지역변수를 만들고 바뀐값을 리턴해주기 때문에 
+	
+	var ref = [1,2,3,4,5];
+	function refParam(ref) {
+		ref.pop()//변수를 스택구조(LIFO:last in first out)로 취급해서 값을 빼고 원본에서는 없어짐		
+				//변수를 큐 구조로 취급(FIFO:first in first out)
+		return ref;
+	}
+	document.write('참조형인자1>'+refParam(ref)+'<br/>');//1,2,3,4
+	document.write('참조형인자2>'+ref+'<br/>');//1,2,3,4,5 일줄 알았지만 1,2,3,4임 왜냐하면 변수와는 달리 주소를 참조하기 때문에 같은 배열을 가지고 하는것이다.
 	</script>
 </head>
 

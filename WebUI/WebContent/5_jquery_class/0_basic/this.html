@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#div1").click(function(){
+        console.log(this);
+        console.log("----------------");
+        console.log($(this));
+        $("#test1").text($(this));
+        $("#test2").text(this);
+    });
+});
+</script>
+</head>
+<body>
+ 
+<div id="div1" style="height:100px;width:300px;border:1px solid black;background-color:yellow;"></div>
+ 
+<div id="test1"></div>
+ 
+<div id="test2"></div>
+</body>
+[출처] [Javascript] javascript this와 $(this)의 차이점|작성자 인큐

@@ -3,10 +3,20 @@
 <head>
 	<meta charset="UTF-8">
 	<title>고급 함수 </title>
-	<script type="text/javascript" src="js/arg_func.js"></script> <!-- <script/>은 버그인가 -->	
+	<script type="text/javascript" src="js/arg_func.js"></script> <!-- <script/>은 버그인가 -->	<!-- 외부자바스크립트를 먼저 불러온다. -->
 	<script type="text/javascript">
 	//----------------------------------------------------------
 	//  함수이름도 인수(파라메터)가 될 수 있다. ( 고차함수 : higher-order function )
+	function testFunc(args){
+		var data = document.frm.num;
+		if(args == 'sum'){
+			arrayProcess(data,sum);//데이터가 들어가있는 배열과 함수명을 넘겨줘서 그 함수명에 맞는 함수가 자동실행됨
+			alert('합계'+sumResult)
+		}else if(args == 'square'){
+			arrayProcess(data,square);
+			alert('제곱'+squareResult);
+		}
+	}
 	
 	
 	

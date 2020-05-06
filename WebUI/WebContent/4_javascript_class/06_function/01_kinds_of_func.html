@@ -4,7 +4,25 @@
 	<meta charset="UTF-8">
 	<title>자바스크립트 함수 만들기</title>
 	<script>
-
+	//1.function 명령어 방식
+		 function first() {
+			var first = document.getElementById('first');
+			first.style.backgroundColor = 'red';
+			first.style.color='yellow';
+		} 
+		//2.third()함수는 함수리터럴방식으로 선언하기
+		var third = function(){
+			var third =document.getElementById('third');
+			third.style.backgroundColor = 'red';
+			third.style.color='yellow';
+		}
+		
+		var second = function() {
+			var second = document.getElementById('second');
+			second.style.backgroundColor = 'blue';
+			second.style.color = 'aqua';
+			
+		}
 	</script>
 </head>
 

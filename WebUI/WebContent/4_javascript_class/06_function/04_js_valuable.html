@@ -4,7 +4,31 @@
 	<meta charset="UTF-8">
 	<title>자바스크립트 변수와 범위</title>
 	<script>
-
+	//글로벌 변수와 지역변수
+	//-var를 따로 선언하지 않으면 글로벌 변수가 된다. 
+/* 	var scope = '글로벌 변수';
+	function getValue() {
+		document.write('0>'+scope+'<br/>');//글로벌변수가 나올줄 알았지만 undefined가 나온다.//왜냐하면 함수로 들어오는 순간 함수 안의 지역변수를 참조해서 함수 
+																				//안에서는 아직 지역변수를 지정하지 않았으므로 아무것도 안나온다.
+		var scope = '지역변수';//이놈은 지역변수라 바뀌지 않는다.var을 지우면 위의 함수밖의 값을 바꿔버림
+		return scope;//;콜론 빼먹어도 될수도 있는데 그냥 다 쳐주자!
+	}
+	document.write('1>'+getValue());//지역변수
+	document.write('2>'+scope);//글로벌변수 */
+	
+	//지역변수: 함수 블럭 안에 변수
+	
+	if(true){
+		var i=100;//지역변수 같지만 함수 안에있는 변수만 지역변수 취급을 해서 이건 글로벌 변수이다.
+		
+	}
+	document.write('i='+i +"<br/>");
+	
+	for(var j=0;j<3;j++){}
+	
+	for(var j=0;j<3;j++){}
+	
+	document.write('j='+j);//덮어쓰는 개념이기 때문에 상관없다. 이런 중복을 막기위해 let 같은 것이 있다.
 	</script>
 </head>
 

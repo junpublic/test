@@ -6,19 +6,28 @@
 <script>
  
 	// @ 1. 인수의 기본값(default) 지정
-   	function multiple( first, second )
+   	function multiple( first, second =100)
 	{
 		return first * second;
 	}
 	document.writeln('곱은 ' +  multiple( 3, 4 ) + '<br/>'  );
 	document.writeln('곱은 ' +  multiple( 3, 4, 5 ) + '<br/>'  );
-	document.writeln('곱은 ' +  multiple( 3 ) + '<br/>' ); 
+	document.writeln('곱은 ' +  multiple( 3 ) + '<br/>' ); ///원래 이렇게 하면 NaN 오류가 나는데 위에서 변수에 값을 넣어주면 오류 안남
 	
 
 	
 	
-	// @ 2. 가변길이 인수(...)
-
+	// @ 2. 가변길이 인수(...)//얼마 들어갈지 모르니까 
+	function sum(...su) {
+		var hap = 0;
+		for(var i of su){//of는 값을 가져오는 거고 in은 요소를 가져온다.
+			hap += i;
+		}
+		return hap;
+	}
+	document.write(sum(1,2,3)+"<br/>");
+	document.write(sum(1,2,3,4)+"<br/>");
+	document.write(sum(1,2,3,4,5,6,7,8,9)+"<br/>");
 	 
 		 
  

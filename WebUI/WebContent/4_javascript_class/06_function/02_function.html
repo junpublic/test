@@ -6,20 +6,59 @@
 </head>
 <body>
 	<script>
-	/*
+	
 	// @ function 명령은 정적인 구조이고, 
 	// @ Function 생성자와 함수리터럴은 실행시 판단한다.
 
-	document.writeln('삼각형의 면적은 2 ' +  triangle(4,3) + '</br>');
+	/* document.writeln('삼각형의 면적은 2 ' +  triangle(4,3) + '<br/>');
 	function triangle ( base, height ){
 				return base * height / 2;
-	}
-		document.writeln('삼각형의 면적은 ' +  triangle(4,3) + '</br>');		
-		var triangle = function( base, height ){
+	} */
+//------------------------------------
+		/* var triangle = function( base, height ){//함수 리터럴방식에서는 위에것과는 다르게 함수가 먼저와야만 인식한다.
 			alert( this.base );
 			return base * height / 2;
 		} 	
-	*/
+	document.writeln('삼각형의 면적은 ' +  triangle(4,3) + '</br>');	 */	
+// 	document.writeln('triangle 값 '+ triangle+'<br/>');
+// 	triangle = '문자열';//위의 삼각형을 덮어씌운다.
+// 	document.writeln('triangle 값 '+ triangle+'<br/>');
+	//@함수 데이터형의 일종이다.
+	
+	//------------------------------------
+	/* function doA() {
+		document.write('함수 A <br/>');
+	}
+	
+	function doB() {
+		document.write('함수 B <br/>');
+	}
+	
+	var arr = [doA,doB];//위의 함수를 값처럼 인자로 넣어버림
+	console.log(arr);
+	//doA();//기존에 기능 부를때
+	arr[0]();//배열에 있는 함수 부를때 */
+	//------------------------------------
+	//@함수가 다른 함수의 인자나 리턴값이 될 수 있다.
+	//f4는 함수명 /f1,f2,f3: 매개변수명
+	function f4(f1,f2,f3) {
+		return f3(f1()+f2());//2+3=5 => 5*5 = 25
+		
+	}
+	
+	var result = f4(function(){return 2;},
+			function(){return 3;},
+			function(a){return a*a;}
+			);
+	document.write('result=' +result);
+	
+	//실행안됨
+// 		document.writeln('삼각형의 면적은 ' +  triangle(4,3) + '</br>');		
+// 		var triangle = function( base, height ){
+// 			alert( this.base );
+// 			return base * height / 2;
+// 		} 	
+	
 	
 	
 	// @ 함수는 데이터형의 일종이다.
