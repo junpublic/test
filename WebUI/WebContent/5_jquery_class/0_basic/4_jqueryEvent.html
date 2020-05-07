@@ -8,7 +8,44 @@
 	.bg { background : yellow; }
 	.border { border : 3px dotted red; }
 </style>
+<script type="text/javascript" src='../lib/jquery-3.5.1.min.js'></script>
+<script type="text/javascript">
+$(function() {
+	$('li').css('cursor','pointer');
+	
+	//bind()와 one()의 차이점 
+	/* $('li').bind('click',function(){//계속 걸림
+		$('#result').text($(this).text());
+	}); */
+	
+	/* $('li').one('click',function(){//딱 한번만 이벤트 걸림
+		$('#result').text($(this).text());
+	}); */
+	
+	/* $('li').click(function(){//계속 걸림 //뭔가틀렸음 못찾음
+	$('#result').text($(this).text());
+	}); */ 
+	
+	/* $('li').click(function(evt){//계속 걸림
+		for(var i in evt){
+			console.log(i+":"+evt[i]);//엄청많은 이벤트가 콘솔에 뜸
+		}
+		});  */
+		
+	//동적으로 요소 만들기 ->이벤트가 안걸림 ->on()이용 
+	$('h1').click(function() {
+		var li = $('<li/>').text(new Date());
+		$('ul').append(li);
+	});
+		
+	/* $('ul').on('click','li',function(){//동적으로 만들어진 요소도 이벤트가 걸린다.
+		$('#result').text($(this).text());
+		
+	}); */
+	
+});
 
+</script>
 </head>
 <body>
 	<h1>제이쿼리 이벤트</h1>

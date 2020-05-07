@@ -3,9 +3,61 @@
 <head>
 	<meta charset="UTF-8">
 	<title> Javascript 객체지향 </title>
+	<script type="text/javascript">
+	//1.클래스 선언 - 생성자로 초기화하기
+	//			생성자명은 일반적으로 대문자로 시작하기
+	/* class Student{
+		//멤버변수
+		//생성자
+		//멤버메소드
+	} */
+	var Student = function(name,kor,eng,math){
+		this.name = name;
+		this.kor = kor;
+		this.eng = eng;
+		this.math = math;
+		
+		/* this.sum = function(){
+			return kor + eng+ math; */
+		};
+/* 	Student.prototype.sum = function(){
+		return this.kor + this.eng+ this.math;
+	};
+	
+
+	Student.prototype.info = function(){//prototype는 class에 추가시킬 수 있게 해주느  좋은놈 다른놈들도 가져다가 쓸 수 있다.
+		return this.name +"님의 평균: "+this.sum()/3+"<br/>";
+	};
+	 */
+	
+	
+	 Student.propotype = {
+		sum : 	function(){
+			return this.kor + this.eng+ this.math;
+		},
+		info: function(){
+			return this.name +"님의 평균: "+this.sum()/3+"<br/>";
+		}
+	}; 
+	//객체생성
+	var s1 = new Student('홍길자',99,66,77);
+	document.write(s1.name + "님의 총점 : " +s1.sum() + '<br/>');
+	
+	/* s1.info = function(){//이렇게 하면 s1에만 함수를 만들어줘서 document.write(s2.info());는 먹히지 않는다.
+		return this.name +"님의 평균: "+this.sum()/3+"<br/>";
+	}; */
+	
+	var s2 = new Student('홍길자',77,55,44);
+	document.write(s2.name + "님의 총점 : " +s2.sum() + '<br/>');
+	document.write(s1.info());
+	document.write(s2.info());
+	
+	</script>
 </head>
 <body>
 <script>
+
+
 
 </script>
 </body>

@@ -66,7 +66,7 @@
 		//취소버튼 눌렸을때 화면 초기화하기
 		$('#check').click(function(){
 			$('#result').text(
-			$('#tf').val()+	$('#ta').val()+$('#sel').val()+$('#sel_m').val()
+			$('#tf').val()+" "+$('#ta').val()+" "+$('#sel option:selected').text()+" "+$('#sel_m option:selected').text()
  			)
 		});
 

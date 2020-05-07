@@ -6,7 +6,7 @@
 </head>
 <body>
 	<script>
-		// 부모클래스
+		// 부모클래스 //클래스로 만드려면 처음에 대문자로 해주자
 		var Animal = function(){ };
 		Animal.prototype = {
 			sound : function(){
@@ -18,9 +18,23 @@
 		};
 
 		// 자식클래스
+		var Dog = function(){};
+		Dog.prototype = new Animal();//상속관계
+		
+		var dog = new Dog();
+		dog.move(); //(1) 부모클래스의 프로토타입을 자기것처럼 사용 가능
 
+		//(2)overriding//재정의
+		Dog.prototype.sound = function(){
+			document.writeln('멍멍짓다 <br/>');
+		}
+		dog.sound();
 
-
+		//(3) 프로토타입 추가
+		Dog.prototype.tail = function(){
+			document.writeln('강아지느는 꼬리를 흔든당 <br/>');
+		}
+		dog.tail();
 	</script>
 </body>
 </html>

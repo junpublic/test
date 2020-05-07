@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>00_object.html</title>
+<script type="text/javascript">
+
+//배열:[], 객체:{} = json 구조
+
+/* var obj = {name:'홍길숙',age:44};// json 구조
+console.log(obj);
+//기존 객체에 추가가 가능
+obj.display = function(){//obj에 display라는 함수를 추가함과 동시에 기능을줌
+	return this.name + "님"+ this.age+ "세 <br/>";//obj안에있는 값들을 가지고 옴
+	
+};
+document.write(obj.display()); */
+
+// var obj2 = new Object();//밑줄과 같은 의미 밑줄이 더 간단하다
+var obj2= {};//객체생성
+obj2.name = '홍길동';
+obj2['age'] = 33;
+// obj2.display = function(){
+obj2['display'] = function(){//윗줄과 같은 기능
+	return this.name + "님"+ this.age+ "세 <br/>";	
+};
+document.write(obj2.display());
+
+/*
+	객체리터럴
+		장점- 별도의 클래스 같은 구조 없이 빠르게 객체 생성하고 구성도 자유롭다	
+		단점- 미리 정의된 구조가 없다는 것은 구조 파악이 어렵고,  재사용도 어렵다.
+*/
+</script>
+</head>
+<body>
+
+</body>
+</html>
