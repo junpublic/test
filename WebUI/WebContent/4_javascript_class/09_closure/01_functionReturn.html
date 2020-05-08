@@ -10,7 +10,32 @@
 //	- 추후에 클로져와 관련
 
 
+var func = function(num){
+	document.write('num='+num+'<br/>');
+}(10);//f(10)와 같은 동작;
 
+var byensu = function(num){
+	
+	/*  var func = function(num){
+		--num;
+		document.write('num='+num+'<br/>');
+	};
+	return func; */
+	 
+	
+	return func = function(num){//return에 바로 함수를 넣어줄 수도 있다.위에것과 같은 내용
+		--num;		//closure의 기본개념 지역변수를 공유하고싶을때? 사용한다?
+		document.write('num='+num+'<br/>');
+	};
+}(10);//변수로 만듦과 동시에 값을 넣어버림
+
+
+document.write(byensu + '<br/>');
+document.write(typeof byensu + '<br/>');
+
+byensu();
+byensu();
+byensu();
 </script>
 </head>
 <body>

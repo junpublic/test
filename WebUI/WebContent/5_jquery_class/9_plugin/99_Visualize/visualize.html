@@ -3,8 +3,20 @@
 <head>
 <meta charset="UTF-8" />
 <title>Visualize</title>
-<script type="text/javascript"  src="http://code.jquery.com/jquery-4.3.1.js"></script>
+<link type="text/css" rel='stylesheet'href='css/visualize.css'></link>
+<link type="text/css" rel='stylesheet'href='css/visualize-light.css'></link>
+<script type="text/javascript"  src="http://code.jquery.com/jquery-3.5.1.js"></script>
 
+<script type="text/javascript" src = 'js/visualize.jQuery.js'></script>
+
+<script type="text/javascript">
+$(function() {
+	$('#data').visualize({type:'bar'});
+	$('#data').visualize({type:'area'});
+	$('#data').visualize({type:'pie'});
+	$('#data').visualize({type:'line'});
+});
+</script>
 </head>
 <body>
 <table id="data">

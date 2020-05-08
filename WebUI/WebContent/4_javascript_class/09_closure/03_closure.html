@@ -12,6 +12,25 @@
 //			호출되는 함수가 참조하는 함수의 메모리 공간을 참조한다. (?)
 //			아무튼 클로저를 이용하여 전역변수의 사용을 줄일 수 있다
 
+function add(a,b,callbackfunc){//밑의 함수를 불러옴
+	var result = a+b;//10+20함
+	callbackfunc(result);//30을 밑의 함수로 넘김
+	var count = 0;
+	return function() {
+		count++;
+		return count+"호출";
+	};
+}
+
+var reVar= add(10,20,function(re){//위에서 받은 결과를 다시 넘김
+	document.write('결과='+re+"<br/>");
+});
+		
+document.write('리턴받은  함수결과:'+reVar()+'<br/>');
+document.write('리턴받은  함수결과:'+reVar()+'<br/>');
+document.write('리턴받은  함수결과:'+reVar()+'<br/>');
+
+
 
 </script>
 </head>

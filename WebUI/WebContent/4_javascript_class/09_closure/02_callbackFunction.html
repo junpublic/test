@@ -9,16 +9,29 @@
  */
  
 /* 		//------ 함수 선언
-		  function add(a,b){
+		  function add(a,b,func){
 			
 		 }
 		
 		//------ 함수 호출
-		add(10,20); 
+		add(10,20,function(){}); //함수를 인자로 넣어줄수 있다.
 */
 		
+function add(a,b,callbackfunc){//밑의 함수를 불러옴
+	var result = a+b;//10+20함
+	callbackfunc(result);//30을 밑의 함수로 넘김
+// 	return result;//reVar에 값을 넘겨줌
+// 	return function() {
+// 		document.write('리턴 결과:'+result);
+// 	};
+}
 
+var reVar= add(10,20,function(re){//위에서 받은 결과를 다시 넘김
+	document.write('결과='+re+"<br/>");
+});
 		
+// document.write(reVar+'<br/>');
+reVar;
 		
 </script>
 </head>

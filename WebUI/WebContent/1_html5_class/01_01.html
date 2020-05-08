@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="euc-kr" /> 	
+		<meta name="viewport" 
+				content="width=device-width, initial-scale=1.0, 
+							maximum-scale=1.0, minimum-scale=1.0, 
+							user-scalable=no"/>
+		<title>모바일 페이지</title>
+	</head>		
+	<body>	
+		<form action="#" >
+		<table>
+		<tr>
+			<td><label>아이디	</label></td><td><input type="text" min="0" max="100" step="1" pattern="^([a-z0-9_]){6,50}$" placeholder="5자~10자 영어와 숫자 조합"/></td><td><input type="button" value="중복확인"/></td><br/>
+		</tr>
+		<tr>	
+			<td><label>비밀번호	</label></td><td><input type="text" min="0" max="100" step="1" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{4,50}$" placeholder="4자이상 영어와 숫자조합"/></td> <td></td><br/>
+		</tr>
+		<tr>	
+			<td><label>비밀번호확인	</label></td><td><input type="text" min="0" max="100" step="1"  /> </td><br/>
+		</tr>
+		<tr>
+			<td><label>이름	</label></td><td><input type="text" min="0" max="100" step="1" placeholder="한글 5자 이내"/> </td><br/>
+		</tr>
+		<tr>
+			<td><label>전화번호	</label></td><td><input type="text" min="0" max="100" step="1"  placeholder="-없이 숫자조합"/></td> <br/>
+			
+		</tr>
+		<tr>
+			<td><label>주소	</label></td><td><input type="text" min="0" max="100" step="1"  placeholder="20자 이내"/></td> <br/>
+		</tr>
+		</table>
+			
+			<input type="submit" value="회원가입"/> <input type="button" value="취소"/> 
+			
+		</form>
+	</body>
+</html>

@@ -9,6 +9,23 @@
 <script type="text/javascript"   src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 <script type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/i18n/jquery-ui-i18n.min.js"></script>
 
+<script type="text/javascript">
+
+$(function() {
+	
+	$.datepicker.setDefaults($.datepicker.regional['ko']);
+	$('#datepicker').datepicker({
+		showOn:'button',
+		buttonImage:"./images/calendar.gif",
+		showButtonPanel:true,
+		showAnim:'slideDown'
+		
+	});
+	
+});
+
+
+</script>
 
 </head>
 <body>
