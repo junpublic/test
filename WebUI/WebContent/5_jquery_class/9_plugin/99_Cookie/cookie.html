@@ -6,7 +6,16 @@
 <script type="text/javascript"   src="http://code.jquery.com/jquery-1.9.0.js"></script>
 <script type="text/javascript"   src="js/jquery.cookie.js"></script>
 <script type="text/javascript">
-
+$(function() {
+	
+	if($.cookie('email')){//쿠키에 저장되어있는 이메일을 가져와서 찍어줌
+		$('#txtMail').val($.cookie('email'));
+	}
+	$('#btnSave').click(function() {
+		$.cookie('email',$('#txtMail').val(),{expires:1});//exprise는 쿠키보관할 날짜임//val은 setter와 getter역할을 둘다한다.
+		$('#txtMail').val('');//이메일을 쿠키에 저장함
+	})
+})
 </script>
 </head>
 <body>

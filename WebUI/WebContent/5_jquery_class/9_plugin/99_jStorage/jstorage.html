@@ -11,6 +11,25 @@
 
   <script type="text/javascript">
 
+  $(function() {
+	  //스토리지에 있는 값을 얻어서 화면 출력
+	  var name1 =$.jStorage.get('name');
+	  var memo1 =$.jStorage.get('memo');
+	  $('#name').val(name1);
+	  $('#memo').val(memo1);
+	  
+		$('#set').click(function() {
+			var name = $('#name').val();
+			var memo = $('#memo').val();
+			$.jStorage.set('name',name);
+			$.jStorage.set('memo',memo);
+			
+		});
+		$('#del').click(function() {
+			$.jStorage.deleteKey('name',name);
+			$.jStorage.deleteKey('memo',memo);
+		});
+	});
   </script>
 </head>
 <body>

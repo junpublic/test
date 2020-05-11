@@ -11,8 +11,26 @@ img{border:none 0;vertical-align:top;}
 #prevBtn{position:absolute;left:0;top:10px;} 
 #nextBtn{position:absolute;right:15px;top:10px;} 
 </style>
+<!--  jquery 라이브러리 -->
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
+  <script>
+    $(document).ready(function(){
+      $('#slide_banner').bxSlider({
+    	  minSlides :4,
+    	  maxSlides:4,
+    	  slideMargin:10,
+    	  slideWidth: 80,
+    	  auto:true,
+    	  speed:200
+      });
+    });
+  </script>
+
+<!--  plugin 라이브러리 -->
 </head>
 <body>
    <div id="banner_wrap">

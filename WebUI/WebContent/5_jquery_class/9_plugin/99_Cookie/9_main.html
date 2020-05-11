@@ -3,8 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <title>메인페이지</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+<script type="text/javascript" src = "js/jquery.cookie.js"></script>
 <script type="text/javascript">
-window.open("9_promotion.html","","width=400, height=360");
+//만일 쿠키에 'Promotion'가 없다면 광고창 오픈
+if($.cookie('Promotion')!='NO'){//쿠키에 'NO'가 있다면 화면 안뜨게함 
+	window.open("9_promotion.html","","width=400, height=360");
+	}
+
 </script>
 </head>
 <body>
