@@ -15,6 +15,18 @@
 	// 2. 내가 지정한 이름의 쿠키를 찾기
 	// 3. 해당하는 그 쿠키의 값을 얻어와 user 변수에 저장
 	
+	boolean success = false;
+	Cookie[] c =  request.getCookies();
+	
+	for(int i=0;c!=null&&i<c.length;i++){//로그인성공
+		if(c[i].getName().equals("login")){
+			success = true;
+			user = c[i].getValue();
+		}
+	}
+	if(!success){//로그인 실패하면 로그인창으로 다시 보냄
+		response.sendRedirect("02_LoginForm.jsp");
+	}
 	
 %>
 

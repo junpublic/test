@@ -96,4 +96,38 @@ public class TempDAO {
 				
 			return success;//boolean 리턴
 	}
+	
+//	public TempVO login(TempVO vo )throws Exception {
+//		boolean success = false;
+//		Connection con = null;
+//		
+//		//연결객체 얻어오기
+//				try {
+//					con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.49:1521:orcl","scott","tiger");
+//					//3.sql문장 (insert문)
+//					String sql = " SELECT *  " + 
+//							" from temp " + 
+//							" where id=? and pass=? ";
+//					
+//					//4. 전송객체 얻어오기 (PreparedStatement)+? 지정
+//					PreparedStatement ps = con.prepareStatement(sql);
+//					ps.setString(1, vo.getId());
+//					ps.setString(2, vo.getPass());
+//				
+//					//5.전송(executeUpdate()이용)
+//					ResultSet rs = ps.executeQuery();
+//					//6.닫기
+//					if(rs.next()) {
+//						success = true;
+//					}
+//					
+//					ps.close();
+//					con.close();
+//				} catch (SQLException e) {
+//					System.out.println(e.getMessage());
+//					e.printStackTrace();
+//				}
+//				
+//			return vo;//boolean 리턴
+//	}
 }

@@ -20,13 +20,10 @@
     boolean success = dao.login(vo);//객체를 로그인 함수로 넘김
 // 	String isok = "";
 	
-	if(!success){//success == false
-// 		isok = "로그인 성공";
+	if(!success){//success == false 로그인 실패시
 		response.sendRedirect("01_first.jsp"); //화면을 첫번쨰 페이지로 바꿈
 	}
-// 	else{
-// // 		isok = "로그인 실패";
-// 	}
+
 %> 
    
 <!DOCTYPE html>

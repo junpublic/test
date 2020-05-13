@@ -4,11 +4,13 @@
 
 <%	
 	// 1. Cookie 객체 생성
+	 Cookie c = new Cookie("JJ","하이하이");//
 	
 	// 2. 속성 부여
+	c.setMaxAge(1*60*5);
 	
 	// 3. 클라이언트에 쿠키 전송
-	
+	response.addCookie(c);
 %>
 
 <html>
