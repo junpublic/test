@@ -3,7 +3,7 @@
 <%@ page import="member.beans.*" %>
 <!-- 하나씩 천천히 도전합시다 -->
 <%request.setCharacterEncoding("UTF-8");%>
-<jsp:useBean id="mem" class="member.beans.Member">
+<jsp:useBean id="mem" class="member.beans.Member">  <!-- setter쉑들을 전부 불러와서 넣어버림 -->
 	<jsp:setProperty name="mem" property = "*"/>
 </jsp:useBean>
 <%

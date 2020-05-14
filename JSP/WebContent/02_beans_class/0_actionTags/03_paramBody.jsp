@@ -11,6 +11,9 @@
 <hr>
 <!-- ########  -->
 
+<jsp:include page="03_paramImage.jsp">
+	<jsp:param value="sp" name="lang"	/>
+</jsp:include>
 
 
 <hr>

@@ -46,8 +46,8 @@
 		<hr><hr>
 
 		<!-- ##################  -->
-		<!--  페이지 이동  -->
-
+		<!--  페이지 포워딩 -->
+		<jsp:forward page="02_forwardSecond.jsp"></jsp:forward><!-- -->
 		
 		
 </body>
