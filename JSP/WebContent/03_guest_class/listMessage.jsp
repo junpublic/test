@@ -3,11 +3,11 @@
 <%@ page import="guest.model.*,guest.service.*" %>   
 <%@ page import="java.util.List" %>
  
-<% 
+<% //누른 번호의 id를 가져와서 그 숫자를 pNum에 저장
 	String pNum = request.getParameter("page");
 	// 전체 메세지 레코드 검색 
 	ListMessageService service = ListMessageService.getInstance();
-	List <Message> mList =  service.getMessageList(pNum); /* 많은 메세지를 받음 //리스트 뽑아온 놈한테 현제 페이지가 무엇인지 넘김*/
+	List <Message> mList =  service.getMessageList(pNum); /* 많은 메세지를 받음 //받은 페이지에 맞는 list를 만들어냄*/
  	//전체 페이지 수
  	int totalPageCount = service.getTotalCount();//총 몇개의 메세지가 있는지 찾아옴
 %>    

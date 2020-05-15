@@ -243,8 +243,7 @@ public class MessageDao {
 			ps.setString(2, password);
 			//4.전송(executeQuery())
 			result=ps.executeUpdate();
-			ps.close();
-			con.close();	
+				
 			
 			return result;//삭제된것을 리턴
 			
