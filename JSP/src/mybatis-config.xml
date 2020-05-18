@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+ 
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ 
+"http://mybatis.org/dtd/mybatis-3-config.dtd"> 
+<configuration>
+ 
+ <properties resource = "dbconnect.properties"></properties> <!-- properties 값들 설정해놓은거 가져오기 -->
+ 
+ <settings>
+ <setting name="mapUnderscoreToCamelCase" value="true"/><!-- 카멜표기법을 true로 바꿈 = 언더바로 되있는게  카멜로 바뀜-->
+ </settings>
+ 
+ <typeAliases>
+ 	<typeAlias type="mybatis.guest.model.Comment" alias='comment'/>
+ 	<typeAlias type="board.gwa.model.Board" alias='board'/><!-- 타입에 별칭을 준다 -->
+ </typeAliases>
+ 
+ 
+<environments default="development">
+ 
+<environment id="development">
+ 
+<transactionManager type="JDBC"/>
+    
+<dataSource type="POOLED">
+ 
+<property name="driver" value="${driver}"/>
+<property name="url" value="${url}"/> 
+<property name="username" value="${username}"/>
+<property name="password" value="${password}"/>
+
+
+<!-- <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+<property name="url" value="jdbc:oracle:thin:@192.168.0.49:1521:orcl"/> 
+<property name="username" value="scott"/>
+<property name="password" value="tiger"/> -->
+ 
+</dataSource>
+ 
+</environment>
+ 
+</environments>
+ 
+ <!-- 주의 :메퍼 연결 필수 -->
+<mappers>
+<mapper resource="mybatis/guest/mapper/CommentMapper.xml"/>
+<mapper resource="board/gwa/mapper/BoardMapper.xml"/>
+ 
+</mappers>
+</configuration>
