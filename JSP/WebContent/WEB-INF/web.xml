@@ -8,6 +8,46 @@
   </welcome-file-list>
   
   <servlet>
+  <servlet-name>SimpleControl</servlet-name>
+  <servlet-class>mvc.simple.SimpleControl</servlet-class><!-- 이 파일이 실행된다. -->
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>SimpleControl</servlet-name><!-- ^ 위에랑 밑에랑 이름이 같아야한다.위에서 이름이 같은걸 실행 -->
+  <url-pattern>/SimpleControl</url-pattern><!-- 이걸 실행하면 위에 줄 실행  점하나도 틀리면 탐캣 구동이 안됨 -->
+  <url-pattern>/sc</url-pattern><!--SimpleControl을 똑같이 부를 수 있음  -->
+  <url-pattern>*.jj</url-pattern><!-- 앞에를 아무렇게나 해줘도 끝에 jj만 있으면 SimpleControl부름  -->
+  <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+   
+   
+    <servlet>
+  <servlet-name>GuestControl</servlet-name>
+  <servlet-class>mvc.guest.control.GuestControl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>GuestControl</servlet-name><!-- ^ 위에랑 밑에랑 이름이 같아야한다. -->
+  <url-pattern>/GuestControl</url-pattern>
+  <url-pattern>/guest</url-pattern>
+  <url-pattern>*.guest</url-pattern>
+  </servlet-mapping>
+   
+  
+  <servlet>
+  <servlet-name>BoardControl</servlet-name>
+  <servlet-class>mvc.guest.control.BoardControl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>BoardControl</servlet-name><!-- ^ 위에랑 밑에랑 이름이 같아야한다. -->
+  <url-pattern>/BoardControl</url-pattern>
+  <url-pattern>/board</url-pattern>
+  <url-pattern>*.board</url-pattern>
+  </servlet-mapping>
+  
+  
+   <servlet>
   <servlet-name>HelloServlet</servlet-name>
   <servlet-class>HelloServlet</servlet-class>
   </servlet>
@@ -16,4 +56,5 @@
   <servlet-name>HelloServlet</servlet-name><!-- ^ 위에랑 밑에랑 이름이 같아야한다. -->
   <url-pattern>/HelloServlet</url-pattern>
   </servlet-mapping>
+  
 </web-app>
